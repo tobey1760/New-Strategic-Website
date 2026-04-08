@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="1760 Strategic AI designs, builds, and deploys AI-powered revenue and operations systems for ambitious businesses." />
+  <title>1760 Strategic AI | Systems Design & Consulting</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Cabinet+Grotesk:wght@300;400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Theme: apply before paint to prevent flash -->
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var preferred = (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : saved;
+      if (preferred === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+</head>
+<body>
+
+<!-- Page intro grid overlay -->
+<div class="intro-grid" id="introGrid" aria-hidden="true">
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+</div>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- Theme toggle -->
+<button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+  <span class="theme-icon" aria-hidden="true">🌙</span>
+</button>
+
+<!-- Back to top -->
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="1760 Strategic AI — home">
+    <div class="logo-emblem" aria-hidden="true"></div>
+    <div class="logo-text">
+      1760 Strategic AI
+      <span>Systems Design & Consulting</span>
+    </div>
+  </a>
+
+  <div class="nav-links" role="menubar">
+    <a href="#approach" role="menuitem">Approach</a>
+    <a href="#services" role="menuitem">Services</a>
+    <a href="#process" role="menuitem">Process</a>
+    <a href="#faq" role="menuitem">FAQ</a>
+    <a href="#contact" class="nav-cta-pill" role="menuitem">Book a Call</a>
+  </div>
+
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+  <a href="#approach">Approach</a>
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact" class="nav-cta-pill">Book a Call</a>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-deco" aria-hidden="true">
+    <video class="hero-video" autoplay muted playsinline>
+      <source src="57860-486852732.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line" aria-hidden="true"></div>
+      <span class="eyebrow-text">AI Strategy & Systems Design</span>
+    </div>
+
+    <div class="hero-headline-wrap">
+      <h1 class="hero-headline">
+        The AI systems<br />
+        your rivals<br />
+        <em>don't have.</em>
+        <span class="outline-text">Yet.</span>
+      </h1>
+      <div class="hero-side">
+        <p>We design, build, and deploy AI-powered revenue and operations systems for ambitious businesses. No decks. No delays. Just results.</p>
+        <div class="hero-cta-group">
+          <a href="#contact" class="btn-gold">
+            Book Free AI Audit
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#services" class="btn-outline-forest">View Services</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-metrics" role="list" aria-label="Key performance metrics">
+      <div class="hero-metric" role="listitem">
+        <div class="metric-val"><span id="cnt1">0</span>%</div>
+        <div class="metric-desc">Average client ROI within<br />the first 90 days</div>
+      </div>
+      <div class="hero-metric" role="listitem">
+        <div class="metric-val">&lt;<span id="cnt2">0</span>h</div>
+        <div class="metric-desc">Time from audit to<br />first measurable result</div>
+      </div>
+      <div class="hero-metric" role="listitem">
+        <div class="metric-val"><span id="cnt3">0</span>x</div>
+        <div class="metric-desc">Average pipeline growth<br />after system launch</div>
+      </div>
+      <div class="hero-metric" role="listitem">
+        <div class="metric-val"><span id="cnt4">0</span>+</div>
+        <div class="metric-desc">Hours saved per week<br />through automation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TICKER ══════════════════ -->
+<div class="ticker" id="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="t-star">◆</span> AI Revenue Engine</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Systems Design</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Founder Intelligence</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Lead Generation</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Operations Automation</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Authority Engine</span>
+    <span class="ticker-item"><span class="t-star">◆</span> AI Strategy</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Growth Consulting</span>
+    <span class="ticker-item"><span class="t-star">◆</span> AI Revenue Engine</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Systems Design</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Founder Intelligence</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Lead Generation</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Operations Automation</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Authority Engine</span>
+    <span class="ticker-item"><span class="t-star">◆</span> AI Strategy</span>
+    <span class="ticker-item"><span class="t-star">◆</span> Growth Consulting</span>
+  </div>
+</div>
+
+<!-- ══════════════════ LOGOS ══════════════════ -->
+<div class="logos-strip" id="logos">
+  <div class="container">
+    <p class="logos-label">Trusted by growth-stage businesses</p>
+    <div class="logos-row" aria-label="Client logos">
+      <span class="logo-co">ACCELERATE CO.</span>
+      <span class="logo-co">NOVA HEALTH</span>
+      <span class="logo-co">BRIDGE VENTURES</span>
+      <span class="logo-co">STACKLINE</span>
+      <span class="logo-co">EMBER LABS</span>
+      <span class="logo-co">MERIDIAN GROUP</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ CATEGORY NAV ══════════════════ -->
+<div class="cat-nav" id="catNav">
+  <div class="container">
+    <nav class="cat-nav-pills" aria-label="Jump to section">
+      <a href="#approach" class="cat-pill" data-section="approach">Our Approach</a>
+      <a href="#services" class="cat-pill" data-section="services">Services</a>
+      <a href="#process" class="cat-pill" data-section="process">How It Works</a>
+      <a href="#testimonials" class="cat-pill" data-section="testimonials">Client Results</a>
+      <a href="#faq" class="cat-pill" data-section="faq">FAQ</a>
+      <a href="#contact" class="cat-pill" data-section="contact">Get Started</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ══════════════════ APPROACH ══════════════════ -->
+<section class="approach" id="approach">
+  <div class="container">
+    <div class="approach-layout">
+
+      <div class="approach-left">
+        <div class="rotating-badge reveal" aria-hidden="true">
+          <svg class="badge-text-ring" viewBox="0 0 120 120">
+            <defs>
+              <path id="circle-path" d="M 60,60 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0"/>
+            </defs>
+            <text font-family="Cabinet Grotesk, sans-serif" font-size="9.5" font-weight="700" letter-spacing="3.5" fill="#c9a84c" opacity="0.8">
+              <textPath href="#circle-path">AI STRATEGY • SYSTEMS BUILD • GROWTH •</textPath>
+            </text>
+          </svg>
+          <div class="badge-center">
+            <span class="badge-center-icon">⚡</span>
+          </div>
+        </div>
+
+        <div class="section-kicker reveal">
+          <span class="kicker-ornament" aria-hidden="true"></span>
+          Our Approach
+        </div>
+        <h2 class="section-heading reveal">From AI-absent<br />to <em>AI-native.</em></h2>
+        <p class="section-body reveal">Three phases. Zero fluff. We move from diagnosis to deployed system in weeks — not quarters.</p>
+        <a href="#contact" class="btn-gold reveal" style="margin-top:32px;">
+          Start the Journey
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="approach-cards">
+        <div class="approach-card reveal">
+          <div class="card-step-num active-num" aria-hidden="true">01</div>
+          <div>
+            <div class="card-tag">Phase One</div>
+            <h3 class="card-content-title">AI Audit</h3>
+            <p class="card-content-body">A ruthless 48-hour diagnostic of your business — ops, revenue model, tech stack. We surface every bottleneck and every dollar you're leaving on the table, ranked by impact.</p>
+          </div>
+        </div>
+        <div class="approach-card reveal reveal-d1">
+          <div class="card-step-num" aria-hidden="true">02</div>
+          <div>
+            <div class="card-tag">Phase Two</div>
+            <h3 class="card-content-title">Growth Plan</h3>
+            <p class="card-content-body">We present the exact systems we'll build, the KPIs we'll hit, the timeline, and the investment. All specifics, zero vagueness. You sign off before we touch a line of code.</p>
+          </div>
+        </div>
+        <div class="approach-card reveal reveal-d2">
+          <div class="card-step-num" aria-hidden="true">03</div>
+          <div>
+            <div class="card-tag">Phase Three</div>
+            <h3 class="card-content-title">Sprint Build & Scale</h3>
+            <p class="card-content-body">We build in fast weekly sprints. You see live demos every Friday. Systems go live in 30 days. Then we compound your advantage month over month with ongoing optimization.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ MANIFESTO ══════════════════ -->
+<section class="manifesto-band" id="manifesto">
+  <div class="container">
+    <div class="manifesto-inner">
+      <blockquote class="manifesto-quote reveal">
+        "You could drive AI transformation from within.<br /><br />
+        Our bet is, <strong>you won't.</strong><br /><br />
+        Not because you don't want to — but because you're focused on business today.<br /><br />
+        We care about <strong>the next decade.</strong>"
+      </blockquote>
+      <div class="manifesto-divider" aria-hidden="true"></div>
+      <div class="manifesto-right reveal reveal-d1">
+        <p>The cost of intelligence is approaching zero. Businesses that fail to become AI-native won't just fall behind — they'll become irrelevant. We help you get ahead of that curve before your competition does.</p>
+        <p>No 200-slide decks. No 6-month strategy phases. Just sharp operators who build real systems that generate real results — at startup speed.</p>
+        <a href="#contact" class="btn-gold">
+          Get Started Today
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<section class="services" id="services">
+  <video class="services-video" autoplay muted playsinline aria-hidden="true">
+    <source src="7234788-uhd_3840_2160_30fps.mp4" type="video/mp4">
+  </video>
+  <div class="container">
+    <div class="testi-header">
+      <div>
+        <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>What We Build</div>
+        <h2 class="section-heading reveal">Four systems.<br /><em>One mission.</em></h2>
+      </div>
+      <p class="section-body reveal" style="max-width:480px;">Every engagement is a combination of these core systems, scoped precisely to where your business has the most leverage.</p>
+    </div>
+
+    <div class="svc-static-grid">
+
+      <article class="svc-card svc-card-1 reveal">
+        <div class="svc-number" aria-hidden="true">01</div>
+        <div class="svc-icon-wrap" aria-hidden="true">🚀</div>
+        <div class="svc-label">Flagship System</div>
+        <h3 class="svc-title">AI Revenue Engine</h3>
+        <p class="svc-body">A fully automated lead generation and outbound engine that finds, qualifies, nurtures, and converts prospects — without adding headcount.</p>
+        <ul class="svc-features">
+          <li>Cold outreach infrastructure (10k+ sends/mo)</li>
+          <li>AI lead scoring & qualification</li>
+          <li>Multi-channel nurture sequences</li>
+          <li>CRM automation & pipeline hygiene</li>
+          <li>A/B tested messaging at scale</li>
+          <li>Real-time reporting dashboards</li>
+        </ul>
+        <a href="#contact" class="svc-link">Learn more →</a>
+      </article>
+
+      <article class="svc-card svc-card-2 reveal reveal-d1">
+        <div class="svc-number" aria-hidden="true">02</div>
+        <div class="svc-icon-wrap" aria-hidden="true">🧠</div>
+        <div class="svc-label">Intelligence Layer</div>
+        <h3 class="svc-title">Founder Intelligence System</h3>
+        <p class="svc-body">Your expertise, knowledge, and frameworks — captured, structured, and deployed as an AI system that scales your thinking across your entire organization.</p>
+        <ul class="svc-features">
+          <li>4-layer knowledge harvesting protocol</li>
+          <li>Custom AI trained in your voice</li>
+          <li>Team adoption & training</li>
+          <li>Ongoing knowledge updates</li>
+        </ul>
+        <a href="#contact" class="svc-link">Learn more →</a>
+      </article>
+
+      <article class="svc-card svc-card-3 reveal reveal-d2">
+        <div class="svc-number" aria-hidden="true">03</div>
+        <div class="svc-icon-wrap" aria-hidden="true">⚙️</div>
+        <div class="svc-label">Operations</div>
+        <h3 class="svc-title">AI Ops Command Center</h3>
+        <p class="svc-body">Seven pre-built AI agents that automate your most expensive operational tasks. Live in 30 days, running 24/7.</p>
+        <a href="#contact" class="svc-link">Learn more →</a>
+      </article>
+
+      <article class="svc-card svc-card-4 reveal reveal-d1">
+        <div class="svc-number" aria-hidden="true">04</div>
+        <div class="svc-icon-wrap" aria-hidden="true">📣</div>
+        <div class="svc-label">Brand Authority</div>
+        <h3 class="svc-title">Authority Engine</h3>
+        <p class="svc-body">Full-stack content and distribution — your expertise turned into omnipresent thought leadership, automatically.</p>
+        <a href="#contact" class="svc-link">Learn more →</a>
+      </article>
+
+      <article class="svc-card svc-card-5 reveal reveal-d2" style="background:var(--forest);border-color:transparent;">
+        <div class="svc-number" aria-hidden="true" style="color:rgba(201,168,76,0.08);">✦</div>
+        <div style="position:relative;z-index:1;">
+          <div class="svc-label" style="color:rgba(201,168,76,0.7);">Free to start</div>
+          <h3 class="svc-title" style="color:var(--ivory);">Not sure<br />where to begin?</h3>
+          <p class="svc-body" style="color:rgba(245,240,232,0.55);">Start with a free AI Audit. We'll show you exactly where the opportunities are — no strings attached.</p>
+          <a href="#contact" class="btn-gold" style="margin-top:24px;font-size:0.82rem;padding:12px 24px;">
+            Book Free Audit →
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PROCESS ══════════════════ -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="process-layout">
+
+      <!-- Left: sticky visual timeline -->
+      <div class="process-visual reveal">
+        <p class="pv-label">Your journey to AI-native</p>
+        <div class="pv-timeline">
+          <div class="pv-step active">
+            <div class="pv-dot-col">
+              <div class="pv-dot active"></div>
+              <div class="pv-connector"></div>
+            </div>
+            <div class="pv-step-label">
+              <strong>Week 0 — AI Audit</strong>
+              48-hour diagnostic. Full opportunity map delivered.
+            </div>
+          </div>
+          <div class="pv-step">
+            <div class="pv-dot-col">
+              <div class="pv-dot"></div>
+              <div class="pv-connector"></div>
+            </div>
+            <div class="pv-step-label">
+              <strong>Week 1 — Growth Plan</strong>
+              Custom systems spec. KPIs guaranteed. MSA signed.
+            </div>
+          </div>
+          <div class="pv-step">
+            <div class="pv-dot-col">
+              <div class="pv-dot"></div>
+              <div class="pv-connector"></div>
+            </div>
+            <div class="pv-step-label">
+              <strong>Weeks 2–4 — Sprint Build</strong>
+              Weekly demos. Full transparency. No black boxes.
+            </div>
+          </div>
+          <div class="pv-step">
+            <div class="pv-dot-col">
+              <div class="pv-dot"></div>
+              <div class="pv-connector"></div>
+            </div>
+            <div class="pv-step-label">
+              <strong>Month 2+ — Launch & Scale</strong>
+              Systems live. KPIs tracked. Advantage compounds.
+            </div>
+          </div>
+          <div class="pv-step">
+            <div class="pv-dot-col"><div class="pv-dot"></div></div>
+            <div class="pv-step-label">
+              <strong>Ongoing — Optimization</strong>
+              Monthly reviews. Always pushing the ceiling higher.
+            </div>
+          </div>
+        </div>
+        <div class="pv-cta-wrap">
+          <a href="#contact" class="btn-gold" style="width:100%;justify-content:center;">
+            Start with a Free Audit
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: step breakdown -->
+      <div class="process-right">
+        <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>How It Works</div>
+        <h2 class="section-heading reveal">Results in<br /><em>30 days,</em><br />not 6 months.</h2>
+
+        <div class="process-steps" style="margin-top:40px;">
+          <div class="process-step reveal">
+            <div class="step-num-large" aria-hidden="true">01</div>
+            <div class="step-content">
+              <span class="step-duration">48 hours</span>
+              <h3 class="step-title">AI Audit</h3>
+              <p class="step-body">We analyze your ops, tech stack, and revenue model. You get a ranked map of your highest-leverage AI opportunities — with projected ROI for each.</p>
+            </div>
+          </div>
+          <div class="process-step reveal reveal-d1">
+            <div class="step-num-large" aria-hidden="true">02</div>
+            <div class="step-content">
+              <span class="step-duration">Week 1</span>
+              <h3 class="step-title">Growth Plan Presentation</h3>
+              <p class="step-body">We present the exact systems we'll build, the KPIs we'll guarantee in your MSA, and the investment required. No vague promises. Just specifics.</p>
+            </div>
+          </div>
+          <div class="process-step reveal reveal-d2">
+            <div class="step-num-large" aria-hidden="true">03</div>
+            <div class="step-content">
+              <span class="step-duration">Weeks 2–4</span>
+              <h3 class="step-title">Sprint Build</h3>
+              <p class="step-body">Our team builds in fast, focused sprints. Live demos every Friday. No black boxes — you see everything as it's built.</p>
+            </div>
+          </div>
+          <div class="process-step reveal reveal-d3">
+            <div class="step-num-large" aria-hidden="true">04</div>
+            <div class="step-content">
+              <span class="step-duration">Month 2+</span>
+              <h3 class="step-title">Launch & Scale</h3>
+              <p class="step-body">Systems go live. We monitor KPIs daily and optimize continuously. Your competitive advantage compounds every single month.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TESTIMONIALS ══════════════════ -->
+<section class="testimonials" id="testimonials">
+  <video class="testimonials-video" autoplay muted loop playsinline aria-hidden="true">
+    <source src="113369-697718072.mp4" type="video/mp4">
+  </video>
+  <div class="testimonials-overlay"></div>
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>Client Results</div>
+        <h2 class="section-heading reveal">Results that<br /><em>speak.</em></h2>
+      </div>
+      <p class="section-body reveal" style="align-self:end;">Real outcomes from real businesses. No cherry-picked metrics.</p>
+    </div>
+
+    <div class="svc-carousel-wrap">
+      <div class="svc-carousel" id="testiCarousel">
+
+        <article class="svc-card testi-card">
+          <div class="testi-stars" aria-label="5 stars">
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+          </div>
+          <span class="testi-quote-mark" aria-hidden="true">"</span>
+          <blockquote class="testi-text">Within 60 days, the AI Revenue Engine had completely replaced our manual outreach process. Pipeline went from $400k to $1.1M in a single quarter. The ROI was immediate and undeniable.</blockquote>
+          <div class="testi-meta">
+            <div class="testi-initials" aria-hidden="true">JR</div>
+            <div>
+              <div class="testi-name">James R.</div>
+              <div class="testi-role">CEO, Stackline</div>
+            </div>
+          </div>
+          <div class="testi-stat">
+            <div class="testi-stat-val">175%</div>
+            <div class="testi-stat-label">Pipeline growth in 90 days</div>
+          </div>
+        </article>
+
+        <article class="svc-card testi-card testi-card-featured">
+          <div class="testi-stars" aria-label="5 stars">
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+          </div>
+          <span class="testi-quote-mark" aria-hidden="true">"</span>
+          <blockquote class="testi-text">The Founder Intelligence System changed how our entire team operates. It's like having me in every meeting — my frameworks, my decision logic, my voice — available 24/7 to the whole company.</blockquote>
+          <div class="testi-meta">
+            <div class="testi-initials" aria-hidden="true">SK</div>
+            <div>
+              <div class="testi-name">Sarah K.</div>
+              <div class="testi-role">Founder, Ember Labs</div>
+            </div>
+          </div>
+          <div class="testi-stat" style="background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);">
+            <div class="testi-stat-val" style="color:var(--gold-light);">40h</div>
+            <div class="testi-stat-label" style="color:rgba(245,240,232,0.5);">Saved per week across the team</div>
+          </div>
+        </article>
+
+        <article class="svc-card testi-card">
+          <div class="testi-stars" aria-label="5 stars">
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+            <span class="star" aria-hidden="true">★</span>
+          </div>
+          <span class="testi-quote-mark" aria-hidden="true">"</span>
+          <blockquote class="testi-text">I was skeptical about AI consulting firms. 1760 changed that. They audited us on Thursday, presented the growth plan Monday, and had the first system live in under 3 weeks. Exceptional operators.</blockquote>
+          <div class="testi-meta">
+            <div class="testi-initials" aria-hidden="true">MT</div>
+            <div>
+              <div class="testi-name">Marcus T.</div>
+              <div class="testi-role">COO, Bridge Ventures</div>
+            </div>
+          </div>
+          <div class="testi-stat">
+            <div class="testi-stat-val">3wk</div>
+            <div class="testi-stat-label">Audit to first system live</div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Navigation -->
+      <div class="svc-carousel-nav">
+        <button class="svc-nav-btn testi-nav-prev" aria-label="Previous card">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="svc-dots">
+          <button class="testi-dot svc-dot active" data-index="0" aria-label="Card 1"></button>
+          <button class="testi-dot svc-dot" data-index="1" aria-label="Card 2"></button>
+          <button class="testi-dot svc-dot" data-index="2" aria-label="Card 3"></button>
+        </div>
+        <button class="svc-nav-btn testi-nav-next" aria-label="Next card">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FAQ ══════════════════ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+
+      <div class="faq-left">
+        <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>Common Questions</div>
+        <h2 class="section-heading reveal">Got<br /><em>questions?</em></h2>
+        <p class="section-body reveal" style="margin-top:16px;">Everything you need to know before booking your free audit.</p>
+        <div class="faq-decoration reveal reveal-d1" aria-hidden="true">
+          <div class="faq-deco-inner">
+            <div class="faq-deco-text">FAQ • FAQ • FAQ • FAQ •</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-list" role="list">
+
+        <div class="faq-item open" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="true">
+            <span class="faq-q-text">What exactly is the free AI Audit?</span>
+            <div class="faq-toggle" aria-hidden="true">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">The AI Audit is a ruthless 48-hour deep-dive into your business — your operations, revenue model, tech stack, and team. We deliver a ranked map of your highest-leverage AI opportunities with projected ROI for each. It costs you nothing and commits you to nothing. We do it because confident clients make the best partners.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-q-text">How quickly will we see real results?</span>
+            <div class="faq-toggle" aria-hidden="true">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Most clients see measurable outcomes within the first 30 days of system launch. Our fastest client saw qualified leads flowing from the AI Revenue Engine within 18 hours of go-live. We build fast and we measure everything from day one.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-q-text">Do we need a large tech team to work with you?</span>
+            <div class="faq-toggle" aria-hidden="true">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">No. We are the tech team. Our engagements are designed to be fully turnkey — we handle the architecture, the build, the integrations, and the launch. You need someone who can answer questions and give feedback. That's it.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-q-text">What size businesses do you work with?</span>
+            <div class="faq-toggle" aria-hidden="true">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">We work exclusively with growth-stage businesses — typically $1M to $50M in revenue — where the leverage from AI systems is highest and where there's enough organizational velocity to scale the results quickly. If you're earlier or later stage, reach out and we'll tell you honestly whether we're the right fit.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-q-text">What does an engagement cost?</span>
+            <div class="faq-toggle" aria-hidden="true">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Engagements are scoped after the audit, so pricing is bespoke. We charge a flat project fee for the build phase and an optional monthly retainer for ongoing optimization. We don't bill by the hour — we're focused on outcomes, not time. Typical engagements range from $15k to $75k depending on scope.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span class="faq-q-text">Do you guarantee results?</span>
+            <div class="faq-toggle" aria-hidden="true">+</div>
+          </div>
+          <div class="faq-a">
+            <div class="faq-a-inner">Yes. The KPIs we commit to in the growth plan are written into your MSA. If we miss the targets we've agreed to, we keep working until we hit them — at no additional cost. We only take on clients we're confident we can deliver for.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CTA ══════════════════ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-deco-rings" aria-hidden="true">
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+      </div>
+
+      <div class="cta-left">
+        <p class="cta-kicker">◆ Free — No Commitment</p>
+        <h2 class="cta-heading">Book your free<br /><em>AI Audit</em><br />today.</h2>
+        <p class="cta-sub">A 48-hour diagnostic that shows you exactly where AI can move the needle in your business. No sales pitch. Just strategy.</p>
+      </div>
+
+      <div class="cta-right">
+        <div class="cta-form-pill">
+          <p>What's included in your free audit:</p>
+          <div class="cta-benefits">
+            <div class="cta-benefit">
+              <div class="benefit-check" aria-hidden="true">✓</div>
+              Full ops & revenue model diagnostic
+            </div>
+            <div class="cta-benefit">
+              <div class="benefit-check" aria-hidden="true">✓</div>
+              Ranked AI opportunity map with projected ROI
+            </div>
+            <div class="cta-benefit">
+              <div class="benefit-check" aria-hidden="true">✓</div>
+              Custom systems recommendation
+            </div>
+            <div class="cta-benefit">
+              <div class="benefit-check" aria-hidden="true">✓</div>
+              Competitive intelligence briefing
+            </div>
+            <div class="cta-benefit">
+              <div class="benefit-check" aria-hidden="true">✓</div>
+              No obligation — ever
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-btn-group">
+          <a href="mailto:hello@1760strategic.ai" class="btn-gold" style="justify-content:center;">
+            Book Free AI Audit
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="mailto:hello@1760strategic.ai" class="btn-outline-forest" style="justify-content:center;border-color:rgba(255,255,255,0.2);color:rgba(245,240,232,0.7);">
+            Send Us a Message
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" aria-label="1760 Strategic AI — home">
+          <div class="logo-emblem" aria-hidden="true"></div>
+          <div class="logo-text">
+            1760 Strategic AI
+            <span>Systems Design & Consulting</span>
+          </div>
+        </a>
+        <p class="footer-desc">We design, build, and deploy AI-powered revenue and operations systems for ambitious growth-stage businesses.</p>
+        <nav class="footer-social" aria-label="Social media links">
+          <a href="#" class="fsocial-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="fsocial-btn" aria-label="X / Twitter">𝕏</a>
+          <a href="mailto:hello@1760strategic.ai" class="fsocial-btn" aria-label="Email">@</a>
+        </nav>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">AI Revenue Engine</a></li>
+          <li><a href="#services">Founder Intelligence</a></li>
+          <li><a href="#services">AI Ops Command Center</a></li>
+          <li><a href="#services">Authority Engine</a></li>
+          <li><a href="#contact">Free AI Audit</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#process">How It Works</a></li>
+          <li><a href="#testimonials">Client Results</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="mailto:hello@1760strategic.ai">hello@1760strategic.ai</a></li>
+          <li><a href="#contact">Book a Call</a></li>
+          <li><a href="#contact">Free Audit</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-gold-line" aria-hidden="true"></div>
+      <p class="footer-copy">© 2026 1760 Strategic AI. All rights reserved.</p>
+      <p class="footer-copy">Privacy · Terms</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/main.js" defer></script>
+
+</body>
+</html>

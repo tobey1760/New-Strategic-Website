@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.tenex.co)",
+      "Bash(mv js/main.tmp js/main.js)"
+    ]
+  }
+}
