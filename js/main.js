@@ -16,18 +16,52 @@
     [indices[i], indices[j]] = [indices[j], indices[i]];
   }
 
-  /* Start reveal after a brief pause */
+  /* Start reveal after logo is visible */
   setTimeout(() => {
     grid.classList.add('reveal');
     blocks.forEach((block, i) => {
-      block.style.animationDelay = (indices.indexOf(i) * 60) + 'ms';
+      block.style.animationDelay = (indices.indexOf(i) * 80) + 'ms';
     });
 
     /* Remove grid from DOM after animation completes */
     setTimeout(() => {
       grid.remove();
-    }, 1800);
-  }, 400);
+    }, 2400);
+  }, 900);
+})();
+
+
+/* ── MANIFESTO VIDEO: play 0:19–0:22 once then stop ── */
+(function initManifestoVideo() {
+  const video = document.getElementById('manifestoVideo');
+  if (!video) return;
+  const START = 19;
+  const END = 22;
+  video.addEventListener('loadedmetadata', function () {
+    video.currentTime = START;
+  });
+  video.addEventListener('timeupdate', function () {
+    if (video.currentTime >= END) {
+      video.pause();
+      video.currentTime = END;
+    }
+  });
+})();
+
+
+/* ── TESTIMONIALS VIDEO: start at 9s ── */
+(function initTestiVideo() {
+  const video = document.getElementById('testiVideo');
+  if (!video) return;
+  video.addEventListener('loadedmetadata', function () {
+    video.currentTime = 9;
+  });
+  /* On loop, jump back to 9s instead of 0 */
+  video.addEventListener('timeupdate', function () {
+    if (video.duration && video.currentTime >= video.duration - 0.1) {
+      video.currentTime = 9;
+    }
+  });
 })();
 
 
