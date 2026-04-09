@@ -367,7 +367,8 @@
 
 <!-- ══════════════════ PROCESS ══════════════════ -->
 <section class="process" id="process">
-  <div class="container">
+  <canvas class="sphere-canvas" id="sphereCanvas" aria-hidden="true"></canvas>
+<div class="container">
     <div class="process-layout">
 
       <!-- Left: sticky visual timeline -->
@@ -664,6 +665,41 @@
   </div>
 </section>
 
+<!-- ══════════════════ NEWSLETTER ══════════════════ -->
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <div class="newsletter-inner">
+
+      <div class="newsletter-left">
+        <p class="newsletter-kicker">◆ Monthly Dispatch</p>
+        <h2 class="newsletter-heading reveal">The 1760 Brief</h2>
+        <p class="newsletter-body reveal">AI strategy insights, case studies, and frameworks — distilled monthly for founders and operators building at the frontier. No noise, only signal.</p>
+      </div>
+
+      <div class="newsletter-right reveal">
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="newsletter-input-wrap">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="your@email.com"
+              aria-label="Email address"
+              required
+            />
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </div>
+          <p class="newsletter-privacy">No spam. Unsubscribe any time.</p>
+        </form>
+        <div class="newsletter-success" id="newsletterSuccess" hidden>
+          <span class="newsletter-success-icon">✓</span>
+          <span>You're in. First issue on its way.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════ CTA ══════════════════ -->
 <section class="cta-section" id="contact">
   <div class="container">
@@ -737,11 +773,6 @@
           </div>
         </a>
         <p class="footer-desc">We design, build, and deploy AI-powered revenue and operations systems for ambitious growth-stage businesses.</p>
-        <nav class="footer-social" aria-label="Social media links">
-          <a href="#" class="fsocial-btn" aria-label="LinkedIn">in</a>
-          <a href="#" class="fsocial-btn" aria-label="X / Twitter">𝕏</a>
-          <a href="mailto:hello@1760strategic.ai" class="fsocial-btn" aria-label="Email">@</a>
-        </nav>
       </div>
 
       <div class="footer-col">
@@ -784,6 +815,7 @@
 </footer>
 
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js" defer></script>
 <script src="js/main.js" defer></script>
 
 </body>

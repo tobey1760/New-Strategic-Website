@@ -23,9 +23,10 @@
       block.style.animationDelay = (indices.indexOf(i) * 80) + 'ms';
     });
 
-    /* Remove grid from DOM after animation completes */
+    /* Remove grid from DOM after animation completes, then reveal nav */
     setTimeout(() => {
       grid.remove();
+      document.querySelector('nav')?.classList.add('nav-visible');
     }, 2400);
   }, 900);
 })();
@@ -111,6 +112,153 @@
   }
 
   tick();
+})();
+
+
+
+/* ── 3D NEURAL SPHERE ── */
+(function initSphere() {
+  if (typeof THREE === 'undefined') return;
+  const canvas = document.getElementById('sphereCanvas');
+  if (!canvas) return;
+
+  const section  = canvas.parentElement;
+  const scene    = new THREE.Scene();
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setClearColor(0x000000, 0);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const camera = new THREE.PerspectiveCamera(52, 1, 0.1, 100);
+  camera.position.z = 7;
+
+  function resize() {
+    const w = Math.round(section.offsetWidth * 0.52);
+    const h = section.offsetHeight || 600;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const GOLD = 0xc9a84c;
+
+  /* Group — float + mouse parallax applied here */
+  const group = new THREE.Group();
+  scene.add(group);
+
+  /* Outer wireframe sphere */
+  const outerMesh = new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.SphereGeometry(2.2, 22, 22)),
+    new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: 0.3 })
+  );
+  group.add(outerMesh);
+
+  /* Inner wireframe sphere (counter-rotates) */
+  const innerMesh = new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.SphereGeometry(1.15, 14, 14)),
+    new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: 0.52 })
+  );
+  group.add(innerMesh);
+
+  /* Neural particles */
+  const N    = 80;
+  const pPos = new Float32Array(N * 3);
+  const pVel = [];
+
+  for (let i = 0; i < N; i++) {
+    const theta = Math.random() * Math.PI * 2;
+    const phi   = Math.acos(2 * Math.random() - 1);
+    const r     = 1.5 + Math.random() * 1.8;
+    pPos[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+    pPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    pPos[i * 3 + 2] = r * Math.cos(phi);
+    pVel.push({
+      vx: (Math.random() - 0.5) * 0.006,
+      vy: (Math.random() - 0.5) * 0.006,
+      vz: (Math.random() - 0.5) * 0.006,
+    });
+  }
+
+  const dotAttr = new THREE.BufferAttribute(pPos, 3);
+  dotAttr.setUsage(THREE.DynamicDrawUsage);
+  const dotGeo = new THREE.BufferGeometry();
+  dotGeo.setAttribute('position', dotAttr);
+  const dots = new THREE.Points(dotGeo,
+    new THREE.PointsMaterial({ color: GOLD, size: 0.08, transparent: true, opacity: 0.9 }));
+  group.add(dots);
+
+  /* Neural connections — pre-allocated buffer */
+  const lBuf     = new Float32Array(N * N * 6);
+  const lineAttr = new THREE.BufferAttribute(lBuf, 3);
+  lineAttr.setUsage(THREE.DynamicDrawUsage);
+  const lineGeo  = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', lineAttr);
+  lineGeo.setDrawRange(0, 0);
+  const linesMesh = new THREE.LineSegments(lineGeo,
+    new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: 0.2 }));
+  group.add(linesMesh);
+
+  /* Mouse parallax */
+  let mx = 0, my = 0;
+  window.addEventListener('mousemove', e => {
+    mx = e.clientX / window.innerWidth  - 0.5;
+    my = e.clientY / window.innerHeight - 0.5;
+  });
+
+  let t = 0;
+
+  (function tick() {
+    requestAnimationFrame(tick);
+    t += 0.007;
+
+    /* Sphere rotations */
+    outerMesh.rotation.y += 0.0022;
+    outerMesh.rotation.x += 0.0009;
+    innerMesh.rotation.y -= 0.004;
+    innerMesh.rotation.z += 0.002;
+
+    /* Breathing pulse on outer sphere */
+    outerMesh.scale.setScalar(1 + Math.sin(t * 0.9) * 0.025);
+
+    /* Float */
+    group.position.y = Math.sin(t * 0.8) * 0.2;
+
+    /* Mouse parallax (aggressive lerp) */
+    group.rotation.y += (mx * 0.8 - group.rotation.y) * 0.1;
+    group.rotation.x += (my * 0.6 - group.rotation.x) * 0.1;
+
+    /* Move particles */
+    for (let i = 0; i < N; i++) {
+      const v = pVel[i];
+      pPos[i * 3]     += v.vx;
+      pPos[i * 3 + 1] += v.vy;
+      pPos[i * 3 + 2] += v.vz;
+      const x = pPos[i * 3], y = pPos[i * 3 + 1], z = pPos[i * 3 + 2];
+      const d2 = x * x + y * y + z * z;
+      if (d2 > 3.5 * 3.5 || d2 < 1.2 * 1.2) { v.vx *= -1; v.vy *= -1; v.vz *= -1; }
+    }
+    dotAttr.needsUpdate = true;
+
+    /* Rebuild neural connection lines */
+    const CONN2 = 1.6 * 1.6;
+    let li = 0;
+    for (let i = 0; i < N; i++) {
+      for (let j = i + 1; j < N; j++) {
+        const dx = pPos[i*3]   - pPos[j*3];
+        const dy = pPos[i*3+1] - pPos[j*3+1];
+        const dz = pPos[i*3+2] - pPos[j*3+2];
+        if (dx*dx + dy*dy + dz*dz < CONN2) {
+          lBuf[li++] = pPos[i*3];   lBuf[li++] = pPos[i*3+1]; lBuf[li++] = pPos[i*3+2];
+          lBuf[li++] = pPos[j*3];   lBuf[li++] = pPos[j*3+1]; lBuf[li++] = pPos[j*3+2];
+        }
+      }
+    }
+    lineAttr.needsUpdate = true;
+    lineGeo.setDrawRange(0, li / 3);
+
+    renderer.render(scene, camera);
+  })();
 })();
 
 
@@ -1034,5 +1182,28 @@
     if (!localStorage.getItem('theme')) {
       applyTheme(e.matches ? 'dark' : 'light');
     }
+  });
+})();
+
+
+/* ── NEWSLETTER FORM ── */
+(function initNewsletter() {
+  const form    = document.getElementById('newsletterForm');
+  const success = document.getElementById('newsletterSuccess');
+  if (!form || !success) return;
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const input = form.querySelector('.newsletter-input');
+    if (!input.value || !input.validity.valid) return;
+
+    form.style.opacity = '0';
+    form.style.transform = 'translateY(-8px)';
+    form.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+    setTimeout(() => {
+      form.hidden = true;
+      success.hidden = false;
+    }, 300);
   });
 })();
