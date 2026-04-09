@@ -65,6 +65,163 @@
 })();
 
 
+/* ── TESTIMONIALS AUTO-SCROLL ── */
+(function initTestiScroll() {
+  const carousel = document.getElementById('testiCarousel');
+  if (!carousel) return;
+
+  carousel.style.scrollBehavior = 'auto';
+
+  /* clone cards for seamless infinite loop */
+  Array.from(carousel.children).forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    carousel.appendChild(clone);
+  });
+
+  const BASE_SPEED = 0.6;
+  let targetSpeed  = BASE_SPEED;
+  let currentSpeed = BASE_SPEED;
+  let pos          = 0;
+
+  /* map mouse X position within carousel to speed:
+     left 30%  → slow drift left (-0.3)
+     middle     → nearly stopped (0.1)
+     right 30%  → fast forward (2.2)               */
+  carousel.addEventListener('mousemove', e => {
+    const rel = (e.clientX - carousel.getBoundingClientRect().left) / carousel.offsetWidth;
+    if      (rel < 0.30) targetSpeed = -0.3;
+    else if (rel > 0.70) targetSpeed =  2.2;
+    else                 targetSpeed =  0.1;
+  });
+
+  carousel.addEventListener('mouseleave', () => { targetSpeed = BASE_SPEED; });
+
+  function tick() {
+    /* lerp toward target for smooth speed transitions */
+    currentSpeed += (targetSpeed - currentSpeed) * 0.06;
+
+    pos += currentSpeed;
+    const half = carousel.scrollWidth / 2;
+    if (pos >= half) pos -= half;
+    if (pos < 0)     pos += half;
+    carousel.scrollLeft = pos;
+
+    requestAnimationFrame(tick);
+  }
+
+  tick();
+})();
+
+
+/* ── NEURAL HEAD ── */
+(function initNeural() {
+  const canvas = document.getElementById('dnaCanvas');
+  if (!canvas) return;
+
+  const section = canvas.parentElement;
+  const ctx     = canvas.getContext('2d');
+  const COUNT   = 140;
+  const CONNECT = 260;
+
+  /* head ellipse params — recomputed on resize */
+  let cx, cy, rx, ry;
+
+  function resize() {
+    canvas.width  = section.offsetWidth;
+    canvas.height = section.offsetHeight;
+    /* right-side head: centred at ~78% across, ~50% down */
+    cx = canvas.width  * 0.78;
+    cy = canvas.height * 0.50;
+    rx = canvas.width  * 0.16;   /* horizontal radius */
+    ry = canvas.height * 0.40;   /* vertical radius — taller than wide */
+  }
+
+  /* point-in-ellipse check */
+  function inHead(x, y) {
+    const dx = (x - cx) / rx;
+    const dy = (y - cy) / ry;
+    return dx * dx + dy * dy <= 1;
+  }
+
+  function randInHead() {
+    let x, y, tries = 0;
+    do {
+      x = cx + (Math.random() * 2 - 1) * rx;
+      y = cy + (Math.random() * 2 - 1) * ry;
+      tries++;
+    } while (!inHead(x, y) && tries < 60);
+    return { x, y };
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = Array.from({ length: COUNT }, () => {
+    const pt = randInHead();
+    return {
+      x: pt.x, y: pt.y,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      r:  1.4 + Math.random() * 1.8,
+      gold: Math.random() > 0.45
+    };
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    /* move + bounce inside ellipse */
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (!inHead(p.x, p.y)) {
+        p.vx *= -1;
+        p.vy *= -1;
+        p.x  += p.vx * 2;
+        p.y  += p.vy * 2;
+        if (!inHead(p.x, p.y)) {
+          const pt = randInHead();
+          p.x = pt.x; p.y = pt.y;
+        }
+      }
+    });
+
+    /* lines */
+    for (let i = 0; i < COUNT; i++) {
+      for (let j = i + 1; j < COUNT; j++) {
+        const dx   = particles[i].x - particles[j].x;
+        const dy   = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECT) {
+          const alpha = (1 - dist / CONNECT) * 0.32;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(220,195,130,${alpha})`;
+          ctx.lineWidth = 0.9;
+          ctx.stroke();
+        }
+      }
+    }
+
+    /* dots */
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.gold
+        ? 'rgba(220,195,130,0.55)'
+        : 'rgba(245,240,232,0.38)';
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
+
 /* ── SEAMLESS VIDEO LOOP: forward then reverse (ping-pong) ── */
 (function initVideoLoop() {
   const video = document.querySelector('.hero-video');
@@ -226,6 +383,7 @@
 
   els.forEach(el => observer.observe(el));
 })();
+
 
 
 /* ── COUNTER ANIMATION ── */
