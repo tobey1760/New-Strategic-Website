@@ -536,25 +536,22 @@
 
 /* ── COUNTER ANIMATION ── */
 (function initCounters() {
-  const targets = {
-    cnt1: { value: 312, suffix: '%' },
-    cnt2: { value: 72,  suffix: 'h' },
-    cnt3: { value: 4,   suffix: 'x' },
-    cnt4: { value: 40,  suffix: '+' },
-  };
+  const nums = document.querySelectorAll('.metric-num[data-count]');
+  if (!nums.length) return;
 
   function easeOut(t) {
     return 1 - Math.pow(1 - t, 3);
   }
 
-  function animateCounter(el, target, duration) {
+  function animateCounter(el, target, decimals, duration) {
     const start = performance.now();
     function update(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      el.textContent = Math.floor(easeOut(progress) * target);
+      const current = easeOut(progress) * target;
+      el.textContent = current.toFixed(decimals);
       if (progress < 1) requestAnimationFrame(update);
-      else el.textContent = target;
+      else el.textContent = decimals > 0 ? target.toFixed(decimals) : target.toString();
     }
     requestAnimationFrame(update);
   }
@@ -566,9 +563,10 @@
   const observer = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting && !started) {
       started = true;
-      Object.entries(targets).forEach(([id, cfg]) => {
-        const el = document.getElementById(id);
-        if (el) animateCounter(el, cfg.value, 2000);
+      nums.forEach(el => {
+        const target   = parseFloat(el.dataset.count);
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        animateCounter(el, target, decimals, 2000);
       });
       observer.disconnect();
     }

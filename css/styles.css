@@ -601,15 +601,27 @@ nav.scrolled::after { opacity: 1; }
 .hero-metric:last-child { border-right: none; margin-right: 0; padding-right: 0; }
 .metric-val {
   font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
+  font-size: 2.4rem;
   font-weight: 900;
   color: var(--gold);
   line-height: 1;
-  letter-spacing: -0.03em;
-  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  white-space: nowrap;
 }
-.metric-val span { color: var(--gold-light); }
-.metric-desc { font-size: 0.82rem; color: rgba(250,248,243,0.6); font-weight: 400; line-height: 1.4; }
+.metric-val span {
+  color: var(--gold-light);
+  font-style: italic;
+  font-weight: 700;
+  margin-left: 1px;
+}
+.metric-desc {
+  font-size: 0.78rem;
+  color: rgba(250,248,243,0.65);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
 
 /* ════ CATEGORY NAV ════ */
 .cat-nav {
@@ -764,6 +776,124 @@ section { position: relative; }
   user-select: none;
 }
 .logo-co:hover { color: rgba(34,52,50,0.55); }
+
+/* ════ PROBLEM STATEMENT ════ */
+.problem-statement {
+  padding: 100px 0;
+  background: var(--ivory);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.problem-statement::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(219,192,120,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.problem-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.problem-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--forest);
+  margin-top: 18px;
+  margin-bottom: 32px;
+}
+.problem-heading em {
+  font-style: italic;
+  color: var(--gold-deep);
+}
+.problem-body {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.problem-body p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+}
+.problem-emphasis {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--forest) !important;
+  margin-top: 28px !important;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-gold);
+}
+
+/* ════ SOCIAL PROOF STRIP ════ */
+.proof-strip {
+  padding: 56px 0;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.proof-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.proof-stat {
+  flex: 1 1 220px;
+  text-align: center;
+  padding: 16px 32px;
+  min-width: 220px;
+}
+.proof-val {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 3.6vw, 3rem);
+  font-weight: 900;
+  color: var(--forest);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.proof-val span {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.proof-desc {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+.proof-divider {
+  width: 1px;
+  height: 56px;
+  background: var(--border-gold);
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .proof-row { gap: 16px; }
+  .proof-divider { display: none; }
+  .proof-stat {
+    flex: 1 1 100%;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .proof-stat:last-child { border-bottom: none; }
+}
 
 /* ════ APPROACH ════ */
 .approach {
@@ -949,6 +1079,21 @@ section { position: relative; }
 .svc-static-grid .svc-card {
   flex: none;
   min-height: 500px;
+}
+
+/* 4-pillars layout: single row of 4 equal cards */
+.svc-static-grid.pillars-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+.svc-static-grid.pillars-grid .svc-card-1,
+.svc-static-grid.pillars-grid .svc-card-2,
+.svc-static-grid.pillars-grid .svc-card-3,
+.svc-static-grid.pillars-grid .svc-card-4 {
+  grid-column: auto;
+}
+.svc-static-grid.pillars-grid .svc-card {
+  min-height: 420px;
+  padding: 36px 28px;
 }
 
 .services {
@@ -2249,6 +2394,20 @@ footer,
 [data-theme="dark"] .logos-strip         { border-color: rgba(255,255,255,0.07); }
 [data-theme="dark"] .logo-co             { color: rgba(234,244,238,0.18); }
 [data-theme="dark"] .logo-co:hover       { color: rgba(234,244,238,0.55); }
+
+/* ── PROBLEM STATEMENT dark mode ── */
+[data-theme="dark"] .problem-statement   { border-color: rgba(255,255,255,0.06); }
+[data-theme="dark"] .problem-heading     { color: var(--text); }
+[data-theme="dark"] .problem-heading em  { color: var(--gold); }
+[data-theme="dark"] .problem-body p      { color: var(--text-mid); }
+[data-theme="dark"] .problem-emphasis    { color: var(--text) !important; }
+
+/* ── PROOF STRIP dark mode ── */
+[data-theme="dark"] .proof-strip         { border-color: rgba(255,255,255,0.06); }
+[data-theme="dark"] .proof-val           { color: var(--text); }
+[data-theme="dark"] .proof-val span      { color: var(--gold); }
+[data-theme="dark"] .proof-desc          { color: var(--text-mid); }
+[data-theme="dark"] .proof-divider       { background: rgba(230,211,160,0.18); }
 
 /* ── APPROACH CARDS ── */
 [data-theme="dark"] .approach-card {
