@@ -346,7 +346,7 @@
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(220,195,130,${alpha})`;
+          ctx.strokeStyle = `rgba(219,192,120,${alpha})`;
           ctx.lineWidth = 0.9;
           ctx.stroke();
         }
@@ -358,8 +358,8 @@
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fillStyle = p.gold
-        ? 'rgba(220,195,130,0.55)'
-        : 'rgba(245,240,232,0.38)';
+        ? 'rgba(219,192,120,0.55)'
+        : 'rgba(247,247,242,0.38)';
       ctx.fill();
     });
 
@@ -1206,4 +1206,127 @@
       success.hidden = false;
     }, 300);
   });
+})();
+
+
+/* ── CTA DOTTED SURFACE (Three.js) ── */
+(function initCtaDottedSurface() {
+  if (typeof THREE === 'undefined') return;
+  const canvas    = document.getElementById('ctaDottedSurface');
+  const container = document.querySelector('.cta-section');
+  if (!canvas || !container) return;
+
+  const SEPARATION = 150;
+  const AMOUNTX    = 40;
+  const AMOUNTY    = 60;
+
+  /* Palette: forest dots on cream (light) / gold dots on dark forest (dark) */
+  const PALETTE = {
+    light: [0.133, 0.204, 0.196], // forest #223432
+    dark:  [0.902, 0.827, 0.627]  // gold-light #e6d3a0
+  };
+  const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 1, 10000);
+  camera.position.set(0, 355, 1220);
+
+  const geometry  = new THREE.BufferGeometry();
+  const positions = [];
+  const colors    = [];
+
+  const setColors = () => {
+    const c = isDark() ? PALETTE.dark : PALETTE.light;
+    for (let k = 0; k < AMOUNTX * AMOUNTY; k++) {
+      colors[k * 3]     = c[0];
+      colors[k * 3 + 1] = c[1];
+      colors[k * 3 + 2] = c[2];
+    }
+  };
+
+  for (let ix = 0; ix < AMOUNTX; ix++) {
+    for (let iy = 0; iy < AMOUNTY; iy++) {
+      positions.push(
+        ix * SEPARATION - (AMOUNTX * SEPARATION) / 2,
+        0,
+        iy * SEPARATION - (AMOUNTY * SEPARATION) / 2
+      );
+      colors.push(0, 0, 0); // placeholder, set below
+    }
+  }
+  setColors();
+
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color',    new THREE.Float32BufferAttribute(colors, 3));
+
+  const material = new THREE.PointsMaterial({
+    size: 8,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.85,
+    sizeAttenuation: true
+  });
+
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  let count = 0;
+  let visible = false;
+
+  const resize = () => {
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    if (w === 0 || h === 0) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  };
+  window.addEventListener('resize', resize, { passive: true });
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(resize).observe(container);
+  }
+  resize();
+
+  /* Re-color on theme switch */
+  const themeObserver = new MutationObserver(() => {
+    const c = isDark() ? PALETTE.dark : PALETTE.light;
+    const arr = geometry.attributes.color.array;
+    for (let k = 0; k < AMOUNTX * AMOUNTY; k++) {
+      arr[k * 3]     = c[0];
+      arr[k * 3 + 1] = c[1];
+      arr[k * 3 + 2] = c[2];
+    }
+    geometry.attributes.color.needsUpdate = true;
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  /* Pause when off-screen */
+  const io = new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+  }, { rootMargin: '100px' });
+  io.observe(container);
+
+  const animate = () => {
+    requestAnimationFrame(animate);
+    if (!visible) return;
+
+    const arr = geometry.attributes.position.array;
+    let i = 0;
+    for (let ix = 0; ix < AMOUNTX; ix++) {
+      for (let iy = 0; iy < AMOUNTY; iy++) {
+        arr[i * 3 + 1] =
+          Math.sin((ix + count) * 0.3) * 50 +
+          Math.sin((iy + count) * 0.5) * 50;
+        i++;
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+    count += 0.1;
+  };
+  animate();
 })();
