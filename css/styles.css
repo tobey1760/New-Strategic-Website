@@ -1883,9 +1883,26 @@ footer {
   .nav-hamburger { display: flex; }
   .nav-drawer { display: flex; }
 
-  .hero { padding: 100px 24px 60px; }
-  .hero-headline-wrap { grid-template-columns: 1fr; gap: 32px; }
-  .hero-side { max-width: 100%; }
+  .hero {
+    padding: 110px 20px 60px;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+  .hero-eyebrow { margin-bottom: 22px; gap: 12px; }
+  .eyebrow-text { font-size: 0.65rem; letter-spacing: 0.16em; }
+  .hero-headline-wrap { gap: 20px; margin-bottom: 28px; }
+  .hero-headline {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+    line-height: 1.05;
+    text-align: center;
+    width: 100%;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  .hero-headline .outline-text { -webkit-text-stroke-width: 1.5px; }
+  .hero-side { max-width: 100%; padding: 0 4px; }
+  .hero-side p { font-size: 0.92rem; }
   .hero-metrics { flex-direction: column; gap: 24px; }
   .hero-metric {
     border-right: none;
@@ -1906,8 +1923,24 @@ footer {
   .manifesto-divider { display: none; }
 
   .services-header { grid-template-columns: 1fr; gap: 32px; }
-  .svc-card-1, .svc-card-2, .svc-card-3,
-  .svc-card-4, .svc-card-5 { grid-column: 1 / -1; }
+
+  /* Services static grid → single-column stack on mobile */
+  .svc-static-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .svc-static-grid .svc-card,
+  .svc-static-grid .svc-card-1,
+  .svc-static-grid .svc-card-2,
+  .svc-static-grid .svc-card-3,
+  .svc-static-grid .svc-card-4,
+  .svc-static-grid .svc-card-5 {
+    grid-column: auto;
+    width: 100%;
+    min-height: auto;
+    padding: 32px 28px;
+  }
 
   .process-layout { grid-template-columns: 1fr; gap: 48px; }
   .process-visual { position: static; }
