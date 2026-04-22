@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="We build the systems that let founders scale without scaling their hours. Strategy, AI, and execution under one roof." />
+  <meta property="og:title" content="Run an organization that runs without you." />
+  <meta property="og:description" content="1760 Strategic AI builds operational infrastructure for health services founders. Revenue systems, operations, founder intelligence, and authority. 90 days. You own everything." />
+  <meta property="og:type" content="website" />
+  <title>1760 Strategic AI | Operational Infrastructure for Founders</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="icon" type="image/png" href="logo%201760.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Always dark — no theme toggle needed -->
+</head>
+<body>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<!-- Page intro grid overlay -->
+<div class="intro-grid" id="introGrid" aria-hidden="true">
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+  <div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div><div class="intro-block"></div>
+  <div class="intro-logo">
+    <div class="intro-logo-emblem"></div>
+    <div class="intro-logo-text">
+      1760 Strategic AI
+      <span>Systems Design &amp; Consulting</span>
+    </div>
+  </div>
+</div>
+
+<!-- Custom cursor -->
+
+<!-- Back to top -->
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+    <div class="logo-emblem" aria-hidden="true"></div>
+    <div class="logo-text">
+      1760 Strategic AI
+      <span>Systems Design &amp; Consulting</span>
+    </div>
+  </a>
+
+  <div class="nav-links" role="menubar">
+    <a href="how-we-work.html" role="menuitem">Our Approach</a>
+    <div class="nav-drop" role="none">
+      <button class="nav-drop-trigger" aria-expanded="false" aria-haspopup="true">The 1760 System</button>
+      <div class="nav-drop-menu" role="menu">
+        <a href="the-1760-system.html" role="menuitem" class="drop-overview">The 1760 System — Overview</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="revenue-engine.html" role="menuitem">Revenue Engine</a>
+        <a href="operations-command-center.html" role="menuitem">Operations Command Center</a>
+        <a href="founder-intelligence.html" role="menuitem">Founder Intelligence System</a>
+        <a href="authority-engine.html" role="menuitem">Authority Engine</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="health-services.html" role="menuitem">Health Services</a>
+        <a href="ai-engineering.html" role="menuitem">AI Engineering</a>
+      </div>
+    </div>
+    <a href="case-studies.html" role="menuitem">Case Studies</a>
+    <a href="about.html" role="menuitem">About</a>
+    <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill" role="menuitem">Book Your AI Audit</a>
+  </div>
+
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+  <a href="how-we-work.html">Our Approach</a>
+  <div class="nav-drawer-group">
+    <div class="nav-drawer-label">The 1760 System</div>
+    <a href="the-1760-system.html">Overview</a>
+    <a href="revenue-engine.html">Revenue Engine</a>
+    <a href="operations-command-center.html">Operations Command Center</a>
+    <a href="founder-intelligence.html">Founder Intelligence System</a>
+    <a href="authority-engine.html">Authority Engine</a>
+    <a href="health-services.html">Health Services</a>
+    <a href="ai-engineering.html">AI Engineering</a>
+  </div>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="about.html">About</a>
+  <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill">Book Your AI Audit</a>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-deco" aria-hidden="true">
+    <video class="hero-video" autoplay muted playsinline id="heroVideo">
+      <source data-src="brain.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
+  </div>
+
+  <div class="hero-inner">
+    <!-- Centered single column — eyebrow bar, dominant headline, sub, CTAs -->
+    <div class="hero-content">
+      <div class="hero-eyebrow-bar">
+        <span class="hero-eyebrow-line-mark" aria-hidden="true"></span>
+        <span class="hero-eyebrow-text">Operational Infrastructure for Health Founders</span>
+      </div>
+      <h1 class="hero-headline">
+        Run an organization<br />
+        <em>that runs</em><br />
+        <span class="outline-text">without you.</span>
+      </h1>
+      <p class="hero-sub">We build the operational infrastructure that lets founders scale without scaling their hours.<br /><em>Purpose-built for health tech and service businesses.</em></p>
+      <div class="hero-cta-group">
+        <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="btn-gold">
+          Book Your AI Audit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="how-we-work.html" class="btn-outline-forest">See How We Work</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-text">Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════ PROBLEM STATEMENT ══════════════════ -->
+<section class="problem-statement" id="problem">
+  <div class="container">
+    <div class="problem-inner">
+      <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>The Founder's Constraint</div>
+      <h2 class="problem-heading reveal">You became<br /><em>the bottleneck.</em></h2>
+      <div class="problem-body reveal reveal-d1">
+        <p>You built something clients love. Now every new client adds more to your plate, not less. Your methodology lives in your head. Your team cannot make decisions without you.</p>
+        <p class="problem-emphasis">Growth creates drag instead of leverage. That is not a time management problem. It is an infrastructure problem.</p>
+        <p class="problem-emphasis">A COO inherits the bottleneck. Infrastructure dissolves it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TICKER ══════════════════ -->
+<div class="ticker" id="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="t-star">—</span> Revenue Engine</span>
+    <span class="ticker-item"><span class="t-star">—</span> Systems Design</span>
+    <span class="ticker-item"><span class="t-star">—</span> Founder Intelligence</span>
+    <span class="ticker-item"><span class="t-star">—</span> Operations Automation</span>
+    <span class="ticker-item"><span class="t-star">—</span> Authority Engine</span>
+    <span class="ticker-item"><span class="t-star">—</span> AI Strategy</span>
+    <span class="ticker-item"><span class="t-star">—</span> Health Services</span>
+    <span class="ticker-item"><span class="t-star">—</span> 90-Day Build</span>
+    <span class="ticker-item"><span class="t-star">—</span> Revenue Engine</span>
+    <span class="ticker-item"><span class="t-star">—</span> Systems Design</span>
+    <span class="ticker-item"><span class="t-star">—</span> Founder Intelligence</span>
+    <span class="ticker-item"><span class="t-star">—</span> Operations Automation</span>
+    <span class="ticker-item"><span class="t-star">—</span> Authority Engine</span>
+    <span class="ticker-item"><span class="t-star">—</span> AI Strategy</span>
+    <span class="ticker-item"><span class="t-star">—</span> Health Services</span>
+    <span class="ticker-item"><span class="t-star">—</span> 90-Day Build</span>
+  </div>
+</div>
+
+<!-- ══════════════════ FOUR PILLARS ══════════════════ -->
+<section class="approach" id="pillars">
+  <div class="ambient-refined" aria-hidden="true">
+    <!-- atmospheric glows -->
+    <div class="ambient-glow ambient-glow-warm ambient-glow-tr"></div>
+    <!-- thin horizontal rules -->
+    <div class="ambient-line ambient-line-high"></div>
+    <div class="ambient-line ambient-line-low"></div>
+    <!-- 3D wireframe cube, slow rotation -->
+    <div class="ambient-wireframe ambient-wireframe-cube">
+      <div class="ambient-cube">
+        <div class="ambient-cube-face ambient-cube-face-1"></div>
+        <div class="ambient-cube-face ambient-cube-face-2"></div>
+        <div class="ambient-cube-face ambient-cube-face-3"></div>
+        <div class="ambient-cube-face ambient-cube-face-4"></div>
+        <div class="ambient-cube-face ambient-cube-face-5"></div>
+        <div class="ambient-cube-face ambient-cube-face-6"></div>
+      </div>
+    </div>
+    <!-- architectural arcs, slow independent rotations -->
+    <div class="ambient-arc ambient-arc-1">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 50 4 A 46 46 0 1 1 12 68" fill="none" stroke="currentColor" stroke-width="0.4" />
+      </svg>
+    </div>
+    <div class="ambient-arc ambient-arc-2">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 95 50 A 45 45 0 0 1 10 70" fill="none" stroke="currentColor" stroke-width="0.4" />
+      </svg>
+    </div>
+    <!-- blueprint grid in bottom-right corner -->
+    <div class="ambient-grid-partial ambient-grid-partial-br"></div>
+  </div>
+  <div class="container">
+    <div class="pillars-layout">
+
+      <div class="pillars-header">
+        <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>What We Build</div>
+        <h2 class="section-heading reveal">Four systems.<br /><em>One transformation.</em></h2>
+        <p class="section-body reveal">Each system is designed to run without you. Together they build an organization that compounds.</p>
+      </div>
+
+      <div class="pillars-cards-grid">
+
+        <article class="approach-card reveal">
+          <div class="card-step-num active-num" aria-hidden="true">01</div>
+          <div>
+            <div class="card-tag">Revenue</div>
+            <h3 class="card-content-title">Revenue Engine</h3>
+            <p class="card-content-body">Predictable acquisition that runs without you in the loop.</p>
+            <a href="revenue-engine.html" class="svc-link">Learn more →</a>
+          </div>
+        </article>
+
+        <article class="approach-card reveal reveal-d1">
+          <div class="card-step-num" aria-hidden="true">02</div>
+          <div>
+            <div class="card-tag">Operations</div>
+            <h3 class="card-content-title">Operations Command Center</h3>
+            <p class="card-content-body">Automated workflows that give your team their week back.</p>
+            <a href="operations-command-center.html" class="svc-link">Learn more →</a>
+          </div>
+        </article>
+
+        <article class="approach-card reveal reveal-d2">
+          <div class="card-step-num" aria-hidden="true">03</div>
+          <div>
+            <div class="card-tag">Intelligence</div>
+            <h3 class="card-content-title">Founder Intelligence System</h3>
+            <p class="card-content-body">Your expertise, accessible to your team. Without you in the room.</p>
+            <a href="founder-intelligence.html" class="svc-link">Learn more →</a>
+          </div>
+        </article>
+
+        <article class="approach-card reveal reveal-d3">
+          <div class="card-step-num" aria-hidden="true">04</div>
+          <div>
+            <div class="card-tag">Authority</div>
+            <h3 class="card-content-title">Authority Engine</h3>
+            <p class="card-content-body">Your voice across every channel. Without you becoming a content creator.</p>
+            <a href="authority-engine.html" class="svc-link">Learn more →</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="pillars-footer reveal" style="flex-wrap:wrap;gap:20px 28px;align-items:center;">
+        <a href="the-1760-system.html" class="btn-gold">
+          See How the System Works
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="assessment.html" class="assessment-inline-cta">
+          <span class="assessment-inline-cta-label">Not sure which pillar is your biggest constraint?</span>
+          <span class="assessment-inline-cta-link">Take the Scorecard &rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ HOW IT WORKS ══════════════════ -->
+<section class="process" id="process">
+  <div class="ambient-refined" aria-hidden="true">
+    <!-- atmospheric centered glow -->
+    <div class="ambient-glow ambient-glow-warm ambient-glow-c"></div>
+    <!-- diagonal thin rule -->
+    <div class="ambient-line ambient-line-diag"></div>
+    <!-- large tilted ring, partially cropped by left edge -->
+    <div class="ambient-ring ambient-ring-large">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" stroke-width="0.5" />
+        <circle cx="200" cy="200" r="140" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.6" />
+      </svg>
+    </div>
+    <!-- smaller counter-rotating ring, bottom-right off-edge -->
+    <div class="ambient-ring ambient-ring-small">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="180" fill="none" stroke="currentColor" stroke-width="0.5" />
+      </svg>
+    </div>
+    <!-- architectural arc, slow rotation -->
+    <div class="ambient-arc ambient-arc-3">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 6 50 A 44 44 0 1 0 70 12" fill="none" stroke="currentColor" stroke-width="0.4" />
+      </svg>
+    </div>
+    <!-- blueprint grid in top-left corner -->
+    <div class="ambient-grid-partial ambient-grid-partial-tl"></div>
+  </div>
+  <div class="container">
+    <div class="process-head reveal">
+      <div class="section-kicker"><span class="kicker-ornament" aria-hidden="true"></span>How It Works</div>
+      <h2 class="section-heading">Audit. Plan. Build.<br /><em>You own it.</em></h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="timeline-rail reveal reveal-d1">
+      <div class="timeline-rail-track" aria-hidden="true"></div>
+      <ol class="timeline-steps" role="list">
+        <li class="timeline-step">
+          <div class="timeline-node" aria-hidden="true"><span class="timeline-node-num">01</span></div>
+          <div class="timeline-step-body">
+            <h3 class="step-title">AI Audit</h3>
+            <p class="step-body">30 minutes. We find the real constraint, not the symptom.</p>
+          </div>
+        </li>
+        <li class="timeline-step">
+          <div class="timeline-node" aria-hidden="true"><span class="timeline-node-num">02</span></div>
+          <div class="timeline-step-body">
+            <h3 class="step-title">Growth Plan</h3>
+            <p class="step-body">A strategic blueprint with measurable targets and defined timelines.</p>
+          </div>
+        </li>
+        <li class="timeline-step">
+          <div class="timeline-node" aria-hidden="true"><span class="timeline-node-num">03</span></div>
+          <div class="timeline-step-body">
+            <h3 class="step-title">90-Day Build</h3>
+            <p class="step-body">We build it. You own it. No lock-in.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ BOLD STATEMENT ══════════════════ -->
+<section class="manifesto-band" id="manifesto">
+  <div class="container">
+    <div class="manifesto-inner">
+      <blockquote class="manifesto-quote reveal">
+        You did not build this organization to spend your days in scheduling conflicts and follow-up emails.<br /><br />
+        You built it to change how care gets delivered, or how a service gets scaled.<br /><br />
+        <strong>The infrastructure should reflect that.</strong>
+      </blockquote>
+      <div class="manifesto-divider" aria-hidden="true"></div>
+      <div class="manifesto-right reveal reveal-d1">
+        <p>We build operational infrastructure that compounds. Revenue systems, operations automation, founder intelligence, and authority — engineered to run without you in the loop.</p>
+        <a href="how-we-work.html" class="btn-gold">
+          See How We Work
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SCORECARD ON-RAMP ══════════════════ -->
+<section class="scorecard-band" id="scorecard">
+  <div class="container">
+    <div class="scorecard-band-card reveal">
+      <span class="scorecard-card-corner scorecard-card-corner-tl" aria-hidden="true"></span>
+      <span class="scorecard-card-corner scorecard-card-corner-tr" aria-hidden="true"></span>
+      <span class="scorecard-card-corner scorecard-card-corner-bl" aria-hidden="true"></span>
+      <span class="scorecard-card-corner scorecard-card-corner-br" aria-hidden="true"></span>
+      <div class="scorecard-band-grid">
+        <div class="scorecard-band-text">
+          <div class="section-kicker"><span class="kicker-ornament" aria-hidden="true"></span>3-Minute Diagnostic</div>
+          <h2 class="section-heading">Not sure<br /><em>where to start?</em></h2>
+          <p class="scorecard-band-body">Not ready for the 30-minute audit? Take the 3-minute Scorecard first. We'll send your results with a personalized audit invitation based on your score.</p>
+          <ul class="scorecard-band-list" role="list">
+            <li><span class="scorecard-band-dash" aria-hidden="true">—</span><span>12 questions. 3 minutes. One clear answer.</span></li>
+            <li><span class="scorecard-band-dash" aria-hidden="true">—</span><span>Revenue, Operations, Knowledge, Authority &mdash; scored.</span></li>
+            <li><span class="scorecard-band-dash" aria-hidden="true">—</span><span>Pre-call context: your consultant reviews your results before you speak.</span></li>
+          </ul>
+        </div>
+        <div class="scorecard-band-aside">
+          <div class="scorecard-band-stats">
+            <div class="pv-stat">
+              <div class="pv-stat-val">12</div>
+              <div class="pv-stat-label">Questions</div>
+            </div>
+            <div class="pv-stat-sep" aria-hidden="true"></div>
+            <div class="pv-stat">
+              <div class="pv-stat-val">4</div>
+              <div class="pv-stat-label">Systems</div>
+            </div>
+            <div class="pv-stat-sep" aria-hidden="true"></div>
+            <div class="pv-stat">
+              <div class="pv-stat-val">~3<span style="font-size:0.55em;font-weight:500;letter-spacing:0;margin-left:2px;">min</span></div>
+              <div class="pv-stat-label">To complete</div>
+            </div>
+          </div>
+          <a href="assessment.html" class="btn-gold scorecard-band-cta">
+            Take the Scorecard
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ CTA ══════════════════ -->
+<section class="cta-section cta-section-cinematic" id="contact">
+  <div class="cta-dotted-surface" aria-hidden="true"></div>
+  <!-- Ghosted, blurred, scaled-up node graph as depth layer — cream theme variant -->
+  <div class="cta-node-graph-bg" aria-hidden="true">
+    <svg class="node-graph ng-blurred" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <g class="ng-lines">
+        <line x1="250" y1="250" x2="258" y2="82"/>
+        <line x1="250" y1="250" x2="422" y2="212"/>
+        <line x1="250" y1="250" x2="244" y2="432"/>
+        <line x1="250" y1="250" x2="88"  y2="238"/>
+        <line x1="258" y1="82"  x2="422" y2="212"/>
+        <line x1="422" y1="212" x2="244" y2="432"/>
+        <line x1="244" y1="432" x2="88"  y2="238"/>
+        <line x1="88"  y1="238" x2="258" y2="82"/>
+      </g>
+      <g class="ng-nodes">
+        <g class="ng-node ng-node-pillar" transform="translate(258 82)"><circle class="ng-ring" r="22"/><circle class="ng-core" r="5.5"/></g>
+        <g class="ng-node ng-node-pillar" transform="translate(422 212)"><circle class="ng-ring" r="22"/><circle class="ng-core" r="5.5"/></g>
+        <g class="ng-node ng-node-pillar" transform="translate(244 432)"><circle class="ng-ring" r="22"/><circle class="ng-core" r="5.5"/></g>
+        <g class="ng-node ng-node-pillar" transform="translate(88 238)"><circle class="ng-ring" r="22"/><circle class="ng-core" r="5.5"/></g>
+        <g class="ng-node ng-node-you" transform="translate(250 250)">
+          <circle class="ng-ring-outer" r="52"/>
+          <circle class="ng-ring" r="36"/>
+          <circle class="ng-core" r="10"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="container">
+    <div class="cta-cinematic-inner">
+      <p class="cta-kicker">— 30 Minutes. No Pitch.</p>
+      <h2 class="cta-heading cta-heading-giant">Start with<br/>the audit.</h2>
+      <p class="cta-sub">Map the real constraint in your organization. No sales pitch. Just strategy.</p>
+      <div class="cta-btn-group" style="justify-content:center;">
+        <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="btn-gold btn-gold-large">
+          Book Your AI Audit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+          <div class="logo-emblem" aria-hidden="true"></div>
+          <div class="logo-text">
+            1760 Strategic AI
+            <span>Systems Design &amp; Consulting</span>
+          </div>
+        </a>
+        <p class="footer-desc">Operational infrastructure for health tech and service founders. Strategy, AI, and execution under one roof.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="health-services.html">Health Services</a></li>
+          <li><a href="ai-engineering.html">AI Engineering</a></li>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">AI Audit</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="the-1760-system.html">The 1760 System</a></li>
+          <li><a href="revenue-engine.html">Revenue Engine</a></li>
+          <li><a href="authority-engine.html">Authority Engine</a></li>
+          <li><a href="operations-command-center.html">Operations Command Center</a></li>
+          <li><a href="founder-intelligence.html">Founder Intelligence System</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="how-we-work.html">How We Work</a></li>
+          <li><a href="assessment.html">Scorecard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="podcast.html">Podcast</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">Book Your AI Audit</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-gold-line" aria-hidden="true"></div>
+      <p class="footer-copy">© 2026 1760 Strategic AI. All rights reserved.</p>
+      <p class="footer-copy">Privacy · Terms</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+
+<script src="js/main.js" defer></script>
+
+</body>
+</html>
