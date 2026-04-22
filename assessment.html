@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Find the constraint that is limiting your growth. 3 minutes. 12 questions. One clear answer." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Readiness Scorecard — 1760 Strategic AI" />
+  <meta property="og:description" content="Find the constraint that is limiting your growth. 3 minutes. 12 questions. One clear answer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://1760strategic.ai/assessment" />
+
+  <title>AI Readiness Scorecard | 1760 Strategic AI</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="icon" type="image/png" href="logo%201760.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/assessment.css" />
+</head>
+<body class="assessment-body">
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav role="navigation" aria-label="Main navigation" class="nav-dark-ctx">
+  <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+    <div class="logo-emblem" aria-hidden="true"></div>
+    <div class="logo-text">
+      1760 Strategic AI
+      <span>Systems Design &amp; Consulting</span>
+    </div>
+  </a>
+
+  <div class="nav-links" role="menubar">
+    <a href="how-we-work.html" role="menuitem">Our Approach</a>
+    <div class="nav-drop" role="none">
+      <button class="nav-drop-trigger" aria-expanded="false" aria-haspopup="true">The 1760 System</button>
+      <div class="nav-drop-menu" role="menu">
+        <a href="the-1760-system.html" role="menuitem" class="drop-overview">The 1760 System — Overview</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="revenue-engine.html" role="menuitem">Revenue Engine</a>
+        <a href="operations-command-center.html" role="menuitem">Operations Command Center</a>
+        <a href="founder-intelligence.html" role="menuitem">Founder Intelligence System</a>
+        <a href="authority-engine.html" role="menuitem">Authority Engine</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="health-services.html" role="menuitem">Health Services</a>
+        <a href="ai-engineering.html" role="menuitem">AI Engineering</a>
+      </div>
+    </div>
+    <a href="case-studies.html" role="menuitem">Case Studies</a>
+    <a href="about.html" role="menuitem">About</a>
+    <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill" role="menuitem">Book Your AI Audit</a>
+  </div>
+
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════ ASSESSMENT APP ══════════════════ -->
+<main id="assessmentApp" class="asmt" data-screen="intro">
+
+  <!-- ── INTRO SCREEN ── -->
+  <section class="asmt-screen asmt-intro" data-key="intro">
+    <div class="asmt-intro-inner">
+      <div class="asmt-kicker"><span class="asmt-kicker-line"></span>AI Readiness Scorecard</div>
+      <h1 class="asmt-headline">AI Readiness<br /><em>Scorecard.</em></h1>
+      <p class="asmt-sub">12 questions. 3 minutes. One clear constraint.</p>
+      <p class="asmt-intro-body">This isn't a quiz. It's a diagnostic. Answer honestly — there are no right answers, only accurate ones. Your results will be scored across all four systems and sent to you with a specific recommendation.</p>
+      <div class="asmt-meta-row">
+        <div class="asmt-meta-item"><span class="asmt-meta-label">Time</span><span class="asmt-meta-val">~3 min</span></div>
+        <div class="asmt-meta-sep"></div>
+        <div class="asmt-meta-item"><span class="asmt-meta-label">Questions</span><span class="asmt-meta-val">12</span></div>
+        <div class="asmt-meta-sep"></div>
+        <div class="asmt-meta-item"><span class="asmt-meta-label">Domains</span><span class="asmt-meta-val">4</span></div>
+      </div>
+      <button class="asmt-cta-gold" id="asmtStartBtn" type="button">
+        Begin the Assessment
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="asmt-intro-footnote">Your answers are private. We share nothing without your consent.</p>
+    </div>
+  </section>
+
+  <!-- ── QUIZ SCREEN ── -->
+  <section class="asmt-screen asmt-quiz" data-key="quiz" hidden>
+    <div class="asmt-quiz-header">
+      <!-- Domain tab strip -->
+      <div class="asmt-domain-tabs" role="tablist" aria-label="Assessment domains">
+        <div class="asmt-domain-tab" data-domain="revenue">Revenue</div>
+        <div class="asmt-domain-tab" data-domain="operations">Operations</div>
+        <div class="asmt-domain-tab" data-domain="knowledge">Intelligence</div>
+        <div class="asmt-domain-tab" data-domain="authority">Authority</div>
+      </div>
+      <!-- Progress bar -->
+      <div class="asmt-progress-track" aria-hidden="true">
+        <div class="asmt-progress-fill" id="asmtProgressFill"></div>
+      </div>
+      <div class="asmt-step-counter"><span id="asmtStepCurrent">1</span> / 12</div>
+    </div>
+
+    <div class="asmt-quiz-stage">
+      <!-- Questions inject here -->
+      <div class="asmt-question-slot" id="asmtQuestionSlot"></div>
+    </div>
+
+    <div class="asmt-quiz-footer">
+      <button class="asmt-back-btn" id="asmtBackBtn" type="button" aria-label="Previous question">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M12 7H2M2 7L6 3M2 7L6 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back
+      </button>
+      <button class="asmt-continue-btn" id="asmtContinueBtn" type="button" disabled>
+        Continue
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ── CALCULATING SCREEN ── -->
+  <section class="asmt-screen asmt-calc" data-key="calc" hidden>
+    <div class="asmt-calc-inner">
+      <div class="asmt-calc-brand">1760 STRATEGIC AI</div>
+      <p class="asmt-calc-label">Analyzing your operational infrastructure...</p>
+      <div class="asmt-calc-icons">
+        <div class="asmt-calc-icon" data-step="1">
+          <span class="asmt-calc-check">✓</span>
+          <span class="asmt-calc-icon-label">Scoring Operations Capacity</span>
+        </div>
+        <div class="asmt-calc-icon" data-step="2">
+          <span class="asmt-calc-check">✓</span>
+          <span class="asmt-calc-icon-label">Scoring Revenue Infrastructure</span>
+        </div>
+        <div class="asmt-calc-icon" data-step="3">
+          <span class="asmt-calc-check">✓</span>
+          <span class="asmt-calc-icon-label">Scoring Knowledge Infrastructure</span>
+        </div>
+        <div class="asmt-calc-icon" data-step="4">
+          <span class="asmt-calc-check">✓</span>
+          <span class="asmt-calc-icon-label">Scoring Market Authority</span>
+        </div>
+      </div>
+      <div class="asmt-calc-bar-track"><div class="asmt-calc-bar-fill" id="asmtCalcBarFill"></div></div>
+      <div class="asmt-calc-divider"></div>
+      <p class="asmt-calc-quote">&ldquo;Most health services organizations have 1&ndash;2 critical operational constraints holding back 20&ndash;40% of their revenue capacity.&rdquo;</p>
+    </div>
+  </section>
+
+  <!-- ── LEAD CAPTURE SCREEN ── -->
+  <section class="asmt-screen asmt-gate" data-key="gate" hidden>
+    <div class="asmt-gate-inner">
+      <div class="asmt-kicker"><span class="asmt-kicker-line"></span>Almost There</div>
+      <h2 class="asmt-gate-headline">Where should we send your results?</h2>
+      <p class="asmt-gate-sub">We specialize in health tech and services, but our approach works for any founder ready to build with AI.</p>
+
+      <form id="asmtLeadForm" class="asmt-form" novalidate>
+        <div class="asmt-form-grid">
+          <div class="asmt-field">
+            <label for="asmt-fname">First name <span class="asmt-field-optional">(optional)</span></label>
+            <input id="asmt-fname" name="firstName" type="text" autocomplete="given-name" />
+          </div>
+          <div class="asmt-field">
+            <label for="asmt-email">Email <span class="req">*</span></label>
+            <input id="asmt-email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="asmt-field">
+            <label for="asmt-industry">Industry <span class="req">*</span></label>
+            <select id="asmt-industry" name="industry" required>
+              <option value="">Select industry...</option>
+              <option>Health Tech</option>
+              <option>Health Services</option>
+              <option>Professional Services</option>
+              <option>Agency</option>
+              <option>SaaS</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="asmt-field">
+            <label for="asmt-team">Team size <span class="req">*</span></label>
+            <select id="asmt-team" name="teamSize" required>
+              <option value="">Select team size...</option>
+              <option>Just me</option>
+              <option>2–5</option>
+              <option>6–15</option>
+              <option>16+</option>
+            </select>
+          </div>
+          <div class="asmt-field asmt-field-full">
+            <label for="asmt-revenue">Revenue range <span class="req">*</span></label>
+            <select id="asmt-revenue" name="revenueRange" required>
+              <option value="">Select range...</option>
+              <option>Pre-revenue</option>
+              <option>Under $500K</option>
+              <option>$500K–$2M</option>
+              <option>$2M–$10M</option>
+              <option>$10M+</option>
+            </select>
+          </div>
+          <div class="asmt-field asmt-field-full">
+            <label for="asmt-challenge">Biggest challenge right now <span class="asmt-field-optional">(optional)</span></label>
+            <textarea id="asmt-challenge" name="biggestChallenge" rows="3" maxlength="300"></textarea>
+          </div>
+          <div class="asmt-field asmt-field-full">
+            <label for="asmt-how-heard">How did you hear about us <span class="asmt-field-optional">(optional)</span></label>
+            <input id="asmt-how-heard" name="howHeard" type="text" autocomplete="off" />
+          </div>
+        </div>
+
+        <button class="asmt-cta-gold asmt-form-submit" type="submit" id="asmtSubmitBtn">
+          See My Score
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="asmt-form-privacy">We'll email your full breakdown and a recommended next step.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── RESULTS SCREEN ── -->
+  <section class="asmt-screen asmt-results" data-key="results" hidden>
+    <!-- Score Hero -->
+    <div class="asmt-res-hero">
+      <div class="asmt-res-container">
+        <div class="asmt-res-gauge-wrap">
+          <svg class="asmt-res-gauge" viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="asmt-gauge-track" cx="100" cy="100" r="88" />
+            <circle class="asmt-gauge-fill" cx="100" cy="100" r="88" id="asmtGaugeFill" />
+          </svg>
+          <div class="asmt-res-gauge-num" id="asmtScoreNum">0</div>
+          <div class="asmt-res-gauge-outof">/ 48</div>
+        </div>
+        <div class="asmt-res-label">YOUR INFRASTRUCTURE SCORE</div>
+        <p class="asmt-res-intro">Your AI Readiness Scorecard is complete.</p>
+        <div class="asmt-res-tier" id="asmtResTier">— —</div>
+      </div>
+    </div>
+
+    <!-- Domain Breakdown -->
+    <section class="asmt-res-section">
+      <div class="asmt-res-container">
+        <div class="asmt-kicker"><span class="asmt-kicker-line"></span>Domain Breakdown</div>
+        <h2 class="asmt-res-h2">Your Infrastructure Score</h2>
+        <div class="asmt-domain-bars" id="asmtDomainBars">
+          <!-- populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Primary Constraint Callout -->
+    <section class="asmt-res-callout">
+      <div class="asmt-res-container">
+        <div class="asmt-callout-kicker">PRIMARY CONSTRAINT</div>
+        <h2 class="asmt-callout-title" id="asmtConstraintTitle">—</h2>
+        <p class="asmt-callout-sentence" id="asmtConstraintSentence">—</p>
+      </div>
+    </section>
+
+    <!-- Constraint Deep Dive -->
+    <section class="asmt-res-section">
+      <div class="asmt-res-container asmt-deep-layout">
+        <div class="asmt-deep-text">
+          <div class="asmt-kicker"><span class="asmt-kicker-line"></span>What This Means</div>
+          <div id="asmtConstraintBody"></div>
+        </div>
+        <aside class="asmt-deep-benchmark">
+          <div class="asmt-deep-benchmark-label">BENCHMARK</div>
+          <p id="asmtBenchmarkText">—</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Three Next Steps -->
+    <section class="asmt-res-section asmt-res-section-alt">
+      <div class="asmt-res-container">
+        <div class="asmt-kicker"><span class="asmt-kicker-line"></span>Where To Start</div>
+        <h2 class="asmt-res-h2">Your starting points.</h2>
+        <ol class="asmt-steps" id="asmtSteps"></ol>
+      </div>
+    </section>
+
+    <!-- Secondary Constraint -->
+    <section class="asmt-res-section">
+      <div class="asmt-res-container">
+        <div class="asmt-kicker"><span class="asmt-kicker-line"></span>Second Priority</div>
+        <p class="asmt-secondary">Your second priority is <strong id="asmtSecondaryDomain">—</strong>. <span id="asmtSecondarySentence">—</span></p>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="asmt-res-final">
+      <div class="asmt-res-container">
+        <div class="asmt-final-card">
+          <h2 class="asmt-final-heading">Want to go deeper on <em id="asmtCtaConstraint">your constraint</em>?</h2>
+          <p class="asmt-final-sub">A 30-minute AI Audit maps your <span id="asmtCtaConstraint2">constraint</span> to a specific, buildable system. Harry reviews your results before the call.</p>
+          <div class="asmt-final-cta-row">
+            <a class="asmt-cta-gold" id="asmtBookBtn" href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">
+              Book Your AI Audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <button class="asmt-cta-outline" id="asmtShareBtn" type="button">Share My Results</button>
+          </div>
+          <p class="asmt-sent-confirm" id="asmtSentConfirm"></p>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<!-- Scripts -->
+<script src="js/main.js" defer></script>
+<script src="js/assessment.js" defer></script>
+
+</body>
+</html>
