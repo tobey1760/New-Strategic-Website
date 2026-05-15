@@ -4136,7 +4136,7 @@ footer {
   }
   .hero-content { max-width: 100%; }
   .hero-eyebrow-bar { margin-bottom: 20px; }
-  .hero-eyebrow-text { font-size: 0.62rem; letter-spacing: 0.22em; }
+  .hero-eyebrow-text { font-size: 0.62rem; letter-spacing: 0.22em; white-space: normal; }
   .hero-eyebrow { margin-bottom: 20px; }
   .eyebrow-text { font-size: 0.62rem; }
   .hero-headline {
