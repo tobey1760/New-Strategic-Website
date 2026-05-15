@@ -112,6 +112,9 @@ html { scroll-behavior: smooth; font-size: 16px; }
 }
 
 /* ════ BASE ════ */
+html {
+  overflow-x: hidden;
+}
 body {
   background: var(--ivory);
   color: var(--text);
