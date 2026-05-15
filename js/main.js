@@ -22,14 +22,11 @@
     const cores = navigator.hardwareConcurrency || 4;
     const mem   = navigator.deviceMemory || 8;
     const save  = navigator.connection && navigator.connection.saveData;
-    const coarse = window.matchMedia('(pointer: coarse)').matches;
     if (save || cores <= 2 || mem <= 2) { flag(); return; }
     /* WebGL availability is a reasonable proxy for GPU acceleration */
     const c = document.createElement('canvas');
     const gl = c.getContext('webgl') || c.getContext('experimental-webgl');
     if (!gl) { flag(); return; }
-    /* On coarse-pointer devices with very few cores, play it safe */
-    if (coarse && cores <= 4) { flag(); return; }
   } catch (e) { /* ignore */ }
 
   /* Live FPS sampling — catches HW accel disabled / overloaded CPU */
