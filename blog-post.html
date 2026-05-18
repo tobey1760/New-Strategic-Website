@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Most teams build the wrong thing in the wrong order. Here is the exact diagnostic sequence we run before touching a single line of code." />
+  <meta property="og:title" content="Why Most AI Implementations Stall Before They Ship" />
+  <meta property="og:description" content="Most teams build the wrong thing in the wrong order. Here is the exact diagnostic sequence we run before touching a single line of code." />
+  <meta property="og:type" content="article" />
+  <title>Why Most AI Implementations Stall Before They Ship | 1760 Strategic AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="logo%201760.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- Reading progress bar -->
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+    <div class="logo-emblem" aria-hidden="true"></div>
+    <div class="logo-text">
+      1760 Strategic AI
+      <span>Systems Design &amp; Consulting</span>
+    </div>
+  </a>
+  <div class="nav-links" role="menubar">
+    <a href="how-we-work.html" role="menuitem">Our Approach</a>
+    <div class="nav-drop" role="none">
+      <button class="nav-drop-trigger" aria-expanded="false" aria-haspopup="true">The 1760 System</button>
+      <div class="nav-drop-menu" role="menu">
+        <a href="the-1760-system.html" role="menuitem" class="drop-overview">The 1760 System — Overview</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="revenue-engine.html" role="menuitem">Revenue Engine</a>
+        <a href="operations-command-center.html" role="menuitem">Operations Command Center</a>
+        <a href="founder-intelligence.html" role="menuitem">Founder Intelligence System</a>
+        <a href="authority-engine.html" role="menuitem">Authority Engine</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="health-services.html" role="menuitem">Health Services</a>
+        <a href="ai-engineering.html" role="menuitem">AI Engineering</a>
+      </div>
+    </div>
+    <a href="case-studies.html" role="menuitem">Case Studies</a>
+    <a href="about.html" role="menuitem">About</a>
+    <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill" role="menuitem">Book Your AI Audit</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+  <a href="how-we-work.html">Our Approach</a>
+  <div class="nav-drawer-group">
+    <div class="nav-drawer-label">The 1760 System</div>
+    <a href="the-1760-system.html">Overview</a>
+    <a href="revenue-engine.html">Revenue Engine</a>
+    <a href="operations-command-center.html">Operations Command Center</a>
+    <a href="founder-intelligence.html">Founder Intelligence System</a>
+    <a href="authority-engine.html">Authority Engine</a>
+    <a href="health-services.html">Health Services</a>
+    <a href="ai-engineering.html">AI Engineering</a>
+  </div>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="about.html">About</a>
+  <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill">Book Your AI Audit</a>
+</div>
+
+<!-- ══════════════════ POST HERO ══════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <video class="page-hero-video" autoplay muted playsinline loop>
+      <source data-src="brain.mp4" type="video/mp4">
+    </video>
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="page-hero-inner">
+
+      <div class="post-hero-meta">
+        <span class="blog-tag">AI Strategy</span>
+        <span class="post-hero-meta-sep" aria-hidden="true"></span>
+        <span class="post-hero-meta-item">May 14, 2026</span>
+        <span class="post-hero-meta-sep" aria-hidden="true"></span>
+        <span class="post-hero-meta-item">9 min read</span>
+      </div>
+
+      <h1 class="page-hero-headline">Why Most AI Implementations<br /><em>Stall Before They Ship</em></h1>
+      <p class="page-hero-sub">The failure is almost never technical. Here is the exact diagnostic sequence we run before touching a single line of code.</p>
+
+      <div class="post-hero-author">
+        <div class="post-hero-author-avatar" aria-hidden="true">HT</div>
+        <div class="post-hero-author-info">
+          <span class="post-hero-author-name">Harry Thornberry</span>
+          <span class="post-hero-author-title">Co-Founder, 1760 Strategic AI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ ARTICLE BODY ══════════════════ -->
+<div style="background: var(--ivory);">
+  <div class="container">
+    <article class="article-wrap" id="article">
+      <div class="article-body">
+
+        <p>Every week we talk to a founder who spent six months and a significant budget on an AI initiative that never shipped. The team was smart. The vendor was credible. The technology worked. And yet nothing made it to production.</p>
+
+        <p>When we do the post-mortem, the root cause is almost always the same: <strong>they built before they diagnosed.</strong> They jumped to a solution before they understood the actual constraint. And when a system is built on a misdiagnosis, it fails — quietly, expensively, and usually too late to recover cleanly.</p>
+
+        <p>This is the most common pattern we see in AI implementation failures, and it is entirely preventable. Here is the diagnostic sequence we run at the start of every engagement before a single prompt is written or a single integration is scoped.</p>
+
+        <h2>Step 1: Define the actual problem, not the symptom</h2>
+
+        <p>Most AI briefs we receive describe symptoms. "We need to automate our reporting." "We want AI to handle customer inquiries." "We need a way to surface insights from our data." These are symptoms. They tell us what the team feels, not what is actually broken.</p>
+
+        <p>The first question we ask is: <strong>what decision is being made badly, too slowly, or not at all because of this problem?</strong> That question reframes the conversation immediately. It shifts from "what should we build" to "what is the business cost of this constraint."</p>
+
+        <blockquote>
+          <p>"The right AI implementation solves for the decision, not the data. Every brief we've ever fixed started with rewriting the problem statement."</p>
+        </blockquote>
+
+        <p>Once the problem is framed as a decision constraint, everything downstream — the data you need, the model you choose, the interface you build — becomes much clearer. Skip this step and you will build something technically impressive that solves the wrong thing.</p>
+
+        <h2>Step 2: Map what you actually have</h2>
+
+        <p>The second most common failure mode is building on top of infrastructure that cannot support it. Teams assume their data is cleaner than it is. They assume their workflows are more consistent than they are. They assume their team has more capacity to adopt a new tool than they do.</p>
+
+        <p>Before we scope anything, we audit three things:</p>
+
+        <ul>
+          <li><strong>Data quality and availability</strong> — Is the data that would feed this system actually clean, accessible, and consistent enough to produce reliable outputs?</li>
+          <li><strong>Process consistency</strong> — Does the underlying workflow this system would plug into run the same way every time, or is it dependent on individual judgment and tribal knowledge?</li>
+          <li><strong>Team adoption capacity</strong> — Does the team have the bandwidth, incentive, and technical fluency to use a new system — and to use it correctly?</li>
+        </ul>
+
+        <p>If any of these three are a hard no, the implementation will fail regardless of how good the model is. You either fix the prerequisite first, or you scope the implementation to work within the constraint.</p>
+
+        <h2>Step 3: Define what "working" actually means</h2>
+
+        <p>This step sounds obvious. It almost never gets done. Most teams cannot tell you, before they build, what a successful implementation looks like in measurable terms. They know they want "better reporting" or "faster responses" but they have not defined the specific metric that would tell them whether the system is delivering value.</p>
+
+        <p>We force this conversation before any scoping happens. What is the current baseline? What number would need to move, by how much, within what timeframe, for this to be considered a success? If the team cannot answer that question, the implementation will drift — and you will never be able to justify the cost or make a case for expanding it.</p>
+
+        <div class="article-callout">
+          <p class="article-callout-label">Key Takeaways</p>
+          <ul>
+            <li>Most AI failures are diagnostic failures, not technical ones — the wrong problem gets solved</li>
+            <li>Audit data quality, process consistency, and team capacity before scoping anything</li>
+            <li>Define measurable success criteria before a single line of code is written</li>
+            <li>The fastest path to a working implementation is a slower, more thorough problem definition phase</li>
+          </ul>
+        </div>
+
+        <h2>How long does this take?</h2>
+
+        <p>The diagnostic we described above takes 30 minutes in a structured conversation with the right people in the room. Not 30 days. Not a consulting engagement. Thirty minutes, with a founder or operator who knows their business and is willing to answer direct questions directly.</p>
+
+        <p>That 30-minute investment has saved every client we have worked with from a minimum of three months of misdirected effort. It is the highest-leverage thing you can do before an AI build — and almost no one does it.</p>
+
+        <p>If you are about to kick off an AI initiative and you have not run this diagnostic, <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">book a 30-minute AI Audit</a>. We will run through it with you. No pitch. Just the diagnostic.</p>
+
+        <div class="article-divider" aria-hidden="true">
+          <div class="article-divider-dot"></div>
+          <div class="article-divider-dot"></div>
+          <div class="article-divider-dot"></div>
+        </div>
+
+      </div>
+
+      <!-- Author Card -->
+      <div class="article-author-card">
+        <div class="article-author-avatar" aria-hidden="true">HT</div>
+        <div>
+          <p class="article-author-name">Harry Thornberry</p>
+          <p class="article-author-bio">Co-Founder of 1760 Strategic AI. Works with health tech and service founders to build operational infrastructure — revenue systems, AI engineering, and the frameworks that let businesses scale without the founder in every loop.</p>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</div>
+
+<!-- ══════════════════ RELATED POSTS ══════════════════ -->
+<section class="related-section">
+  <div class="container">
+
+    <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>Keep Reading</div>
+    <h2 class="section-heading reveal">More from<br /><em>the field.</em></h2>
+
+    <div class="related-grid">
+
+      <article class="blog-card reveal">
+        <div class="blog-card-img" data-cat="revenue">
+          <div class="blog-card-img-inner" aria-hidden="true"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Revenue</span>
+          </div>
+          <h3 class="blog-card-title">Building Pipeline That Does Not Collapse When You Step Away</h3>
+          <p class="blog-card-excerpt">Referral-only revenue feels safe until it stops. Here is the system we use to build outbound infrastructure that runs without the founder in the loop.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">May 10, 2026 · 7 min read</span>
+            <a href="#" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d1">
+        <div class="blog-card-img" data-cat="operations">
+          <div class="blog-card-img-inner" aria-hidden="true"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Operations</span>
+          </div>
+          <h3 class="blog-card-title">The Operations Backbone: What Service Businesses Get Wrong</h3>
+          <p class="blog-card-excerpt">Most service businesses run on heroics, not systems. One person holds too much. Here is what the operations backbone actually looks like when it is built correctly.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">May 6, 2026 · 8 min read</span>
+            <a href="#" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d2">
+        <div class="blog-card-img" data-cat="authority">
+          <div class="blog-card-img-inner" aria-hidden="true"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Authority</span>
+          </div>
+          <h3 class="blog-card-title">Authority Is Infrastructure: Why Thought Leadership Requires a System</h3>
+          <p class="blog-card-excerpt">Posting consistently is not a strategy. Authority is the result of a deliberate system: content, distribution, positioning, and proof. This is how we build it.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">Apr 29, 2026 · 6 min read</span>
+            <a href="#" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CTA ══════════════════ -->
+<section class="cta-section">
+  <div class="cta-dotted-surface" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-inner cta-centered">
+      <div class="cta-deco-rings" aria-hidden="true">
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+      </div>
+      <p class="cta-kicker">— 30 Minutes. No Pitch.</p>
+      <h2 class="cta-heading">Start with the audit.</h2>
+      <p class="cta-sub">30 minutes. No pitch.</p>
+      <div class="cta-btn-group" style="justify-content:center;">
+        <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="btn-gold">
+          Book Your AI Audit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+          <div class="logo-emblem" aria-hidden="true"></div>
+          <div class="logo-text">
+            1760 Strategic AI
+            <span>Systems Design &amp; Consulting</span>
+          </div>
+        </a>
+        <p class="footer-desc">Operational infrastructure for health tech and service founders. Strategy, AI, and execution under one roof.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="health-services.html">Health Services</a></li>
+          <li><a href="ai-engineering.html">AI Engineering</a></li>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">AI Audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="the-1760-system.html">The 1760 System</a></li>
+          <li><a href="revenue-engine.html">Revenue Engine</a></li>
+          <li><a href="authority-engine.html">Authority Engine</a></li>
+          <li><a href="operations-command-center.html">Operations Command Center</a></li>
+          <li><a href="founder-intelligence.html">Founder Intelligence System</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="how-we-work.html">How We Work</a></li>
+          <li><a href="assessment.html">Scorecard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="podcast.html">Podcast</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">Book Your AI Audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-gold-line" aria-hidden="true"></div>
+      <p class="footer-copy">© 2026 1760 Strategic AI. All rights reserved.</p>
+      <p class="footer-copy">Privacy · Terms</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script>
+  (function () {
+    // Reading progress bar
+    var bar = document.getElementById('readingProgress');
+    var article = document.getElementById('article');
+    if (bar && article) {
+      window.addEventListener('scroll', function () {
+        var rect = article.getBoundingClientRect();
+        var total = article.offsetHeight - window.innerHeight;
+        var scrolled = Math.max(0, -rect.top);
+        var pct = total > 0 ? Math.min(100, (scrolled / total) * 100) : 0;
+        bar.style.width = pct + '%';
+      }, { passive: true });
+    }
+    // Reveal fallback for local file:// preview
+    setTimeout(function () {
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        el.classList.add('in');
+      });
+    }, 80);
+  }());
+</script>
+</body>
+</html>

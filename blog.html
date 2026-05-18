@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Thinking out loud on AI strategy, operations, revenue systems, and what it actually takes to build infrastructure that scales." />
+  <meta property="og:title" content="Perspectives — 1760 Strategic AI" />
+  <meta property="og:description" content="Thinking out loud on AI strategy, operations, revenue systems, and what it actually takes to build infrastructure that scales." />
+  <meta property="og:type" content="website" />
+  <title>Perspectives | 1760 Strategic AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="logo%201760.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+    <div class="logo-emblem" aria-hidden="true"></div>
+    <div class="logo-text">
+      1760 Strategic AI
+      <span>Systems Design &amp; Consulting</span>
+    </div>
+  </a>
+  <div class="nav-links" role="menubar">
+    <a href="how-we-work.html" role="menuitem">Our Approach</a>
+    <div class="nav-drop" role="none">
+      <button class="nav-drop-trigger" aria-expanded="false" aria-haspopup="true">The 1760 System</button>
+      <div class="nav-drop-menu" role="menu">
+        <a href="the-1760-system.html" role="menuitem" class="drop-overview">The 1760 System — Overview</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="revenue-engine.html" role="menuitem">Revenue Engine</a>
+        <a href="operations-command-center.html" role="menuitem">Operations Command Center</a>
+        <a href="founder-intelligence.html" role="menuitem">Founder Intelligence System</a>
+        <a href="authority-engine.html" role="menuitem">Authority Engine</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="health-services.html" role="menuitem">Health Services</a>
+        <a href="ai-engineering.html" role="menuitem">AI Engineering</a>
+      </div>
+    </div>
+    <a href="case-studies.html" role="menuitem">Case Studies</a>
+    <a href="about.html" role="menuitem">About</a>
+    <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill" role="menuitem">Book Your AI Audit</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+  <a href="how-we-work.html">Our Approach</a>
+  <div class="nav-drawer-group">
+    <div class="nav-drawer-label">The 1760 System</div>
+    <a href="the-1760-system.html">Overview</a>
+    <a href="revenue-engine.html">Revenue Engine</a>
+    <a href="operations-command-center.html">Operations Command Center</a>
+    <a href="founder-intelligence.html">Founder Intelligence System</a>
+    <a href="authority-engine.html">Authority Engine</a>
+    <a href="health-services.html">Health Services</a>
+    <a href="ai-engineering.html">AI Engineering</a>
+  </div>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="about.html">About</a>
+  <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill">Book Your AI Audit</a>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <video class="page-hero-video" autoplay muted playsinline loop>
+      <source data-src="brain.mp4" type="video/mp4">
+    </video>
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="section-kicker" style="color:var(--gold);"><span class="kicker-ornament" aria-hidden="true"></span>Perspectives</div>
+      <h1 class="page-hero-headline">Thinking out loud<br />on <em>what builds.</em></h1>
+      <p class="page-hero-sub">AI strategy, operations, revenue systems, and the frameworks behind businesses that actually scale.</p>
+    </div>
+  </div>
+</section>
+
+<div class="insight-band">
+  <blockquote>"The operators who win are not the ones who read about systems. They are the ones who install them. This is where we document what installing them actually looks like."</blockquote>
+  <cite>1760 Strategic AI</cite>
+</div>
+
+<!-- ══════════════════ BLOG LISTING ══════════════════ -->
+<section class="inner-section" id="articles">
+  <div class="container">
+
+    <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>Articles</div>
+    <h2 class="section-heading reveal">What we know.<br /><em>Written down.</em></h2>
+
+    <div class="filter-bar reveal reveal-d1" role="group" aria-label="Filter articles">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="ai-strategy">AI Strategy</button>
+      <button class="filter-pill" data-filter="revenue">Revenue</button>
+      <button class="filter-pill" data-filter="operations">Operations</button>
+      <button class="filter-pill" data-filter="authority">Authority</button>
+      <button class="filter-pill" data-filter="health-tech">Health Tech</button>
+    </div>
+
+    <!-- Featured Post -->
+    <article class="blog-featured reveal reveal-d2" data-category="ai-strategy">
+      <a href="blog-post.html" class="blog-featured-img" data-cat="ai-strategy" aria-hidden="true" tabindex="-1">
+        <div class="blog-featured-img-inner" style="background-image:url('https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?w=900&h=500&fit=crop&auto=format&q=80');"></div>
+      </a>
+      <div class="blog-featured-content">
+        <div class="blog-featured-eyebrow">
+          <span class="blog-featured-badge">Featured</span>
+          <span class="blog-tag">AI Strategy</span>
+        </div>
+        <h2 class="blog-featured-title">Why Most AI Implementations Stall Before They Ship</h2>
+        <p class="blog-featured-excerpt">Most teams build the wrong thing in the wrong order — and wonder why six months later nothing is live. The failure is almost never technical. Here is the exact diagnostic sequence we run before touching a single line of code or writing a single prompt.</p>
+        <p class="blog-featured-meta"><span>May 14, 2026</span> &nbsp;·&nbsp; 9 min read</p>
+        <a href="blog-post.html" class="btn-gold">
+          Read Article
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Blog Grid -->
+    <div class="blog-grid">
+
+      <article class="blog-card reveal" data-category="revenue">
+        <div class="blog-card-img" data-cat="revenue">
+          <div class="blog-card-img-inner" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=450&fit=crop&auto=format&q=80');"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Revenue</span>
+          </div>
+          <h3 class="blog-card-title">Building Pipeline That Does Not Collapse When You Step Away</h3>
+          <p class="blog-card-excerpt">Referral-only revenue feels safe until it stops. Here is the system we use to build outbound infrastructure that runs without the founder in the loop.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">May 10, 2026 · 7 min read</span>
+            <a href="blog-revenue-pipeline.html" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d1" data-category="operations">
+        <div class="blog-card-img" data-cat="operations">
+          <div class="blog-card-img-inner" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1542744094-24638eff58bb?w=800&h=450&fit=crop&auto=format&q=80');"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Operations</span>
+          </div>
+          <h3 class="blog-card-title">The Operations Backbone: What Service Businesses Get Wrong</h3>
+          <p class="blog-card-excerpt">Most service businesses run on heroics, not systems. One person holds too much. Here is what the operations backbone actually looks like when it is built correctly.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">May 6, 2026 · 8 min read</span>
+            <a href="blog-operations-backbone.html" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d2" data-category="authority">
+        <div class="blog-card-img" data-cat="authority">
+          <div class="blog-card-img-inner" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=450&fit=crop&auto=format&q=80');"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Authority</span>
+          </div>
+          <h3 class="blog-card-title">Authority Is Infrastructure: Why Thought Leadership Requires a System</h3>
+          <p class="blog-card-excerpt">Posting consistently is not a strategy. Authority is the result of a deliberate system: content, distribution, positioning, and proof. This is how we build it.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">Apr 29, 2026 · 6 min read</span>
+            <a href="blog-authority-infrastructure.html" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" data-category="health-tech">
+        <div class="blog-card-img" data-cat="health-tech">
+          <div class="blog-card-img-inner" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=450&fit=crop&auto=format&q=80');"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Health Tech</span>
+          </div>
+          <h3 class="blog-card-title">AI in Health Services: The Use Cases That Actually Work in 2026</h3>
+          <p class="blog-card-excerpt">Not every AI use case belongs in healthcare. After working inside health tech organizations, here are the implementations with real ROI and the ones to avoid.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">Apr 22, 2026 · 9 min read</span>
+            <a href="blog-ai-health-services.html" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d1" data-category="ai-strategy">
+        <div class="blog-card-img" data-cat="ai-strategy">
+          <div class="blog-card-img-inner" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop&auto=format&q=80');"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">AI Strategy</span>
+          </div>
+          <h3 class="blog-card-title">Decision-Making Without Data Paralysis: The Founder Intelligence Framework</h3>
+          <p class="blog-card-excerpt">Founders drown in dashboards and still feel blind. The Founder Intelligence System is not about more data — it is about the right signal, surfaced at the right time.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">Apr 15, 2026 · 7 min read</span>
+            <a href="blog-founder-intelligence.html" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog-card reveal reveal-d2" data-category="operations">
+        <div class="blog-card-img" data-cat="operations">
+          <div class="blog-card-img-inner" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1533749871411-5e21e14bcc7d?w=800&h=450&fit=crop&auto=format&q=80');"></div>
+          <div class="blog-card-img-line" aria-hidden="true"></div>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-top">
+            <span class="blog-tag">Operations</span>
+          </div>
+          <h3 class="blog-card-title">How We Audit a Business Before We Build Anything</h3>
+          <p class="blog-card-excerpt">Every engagement starts with an audit — not a proposal. Here is the exact diagnostic we run in 30 minutes that tells us where to build first and what to ignore.</p>
+          <div class="blog-card-footer">
+            <span class="blog-card-meta">Apr 8, 2026 · 5 min read</span>
+            <a href="blog-audit-first.html" class="blog-card-link">
+              Read
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Newsletter Strip -->
+    <div class="blog-newsletter reveal">
+      <div>
+        <p class="blog-newsletter-label">Stay Sharp</p>
+        <h3 class="blog-newsletter-heading">Get new articles<br />in your inbox.</h3>
+        <p class="blog-newsletter-sub">Frameworks, case studies, and field notes — delivered when we publish. No noise.</p>
+      </div>
+      <form class="blog-newsletter-form" onsubmit="return false;">
+        <input type="email" class="blog-newsletter-input" placeholder="your@email.com" aria-label="Email address" />
+        <button type="submit" class="blog-newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ CTA ══════════════════ -->
+<section class="cta-section">
+  <div class="cta-dotted-surface" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-inner cta-centered">
+      <div class="cta-deco-rings" aria-hidden="true">
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+      </div>
+      <p class="cta-kicker">— 30 Minutes. No Pitch.</p>
+      <h2 class="cta-heading">Start with the audit.</h2>
+      <p class="cta-sub">30 minutes. No pitch.</p>
+      <div class="cta-btn-group" style="justify-content:center;">
+        <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="btn-gold">
+          Book Your AI Audit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+          <div class="logo-emblem" aria-hidden="true"></div>
+          <div class="logo-text">
+            1760 Strategic AI
+            <span>Systems Design &amp; Consulting</span>
+          </div>
+        </a>
+        <p class="footer-desc">Operational infrastructure for health tech and service founders. Strategy, AI, and execution under one roof.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="health-services.html">Health Services</a></li>
+          <li><a href="ai-engineering.html">AI Engineering</a></li>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">AI Audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="the-1760-system.html">The 1760 System</a></li>
+          <li><a href="revenue-engine.html">Revenue Engine</a></li>
+          <li><a href="authority-engine.html">Authority Engine</a></li>
+          <li><a href="operations-command-center.html">Operations Command Center</a></li>
+          <li><a href="founder-intelligence.html">Founder Intelligence System</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="how-we-work.html">How We Work</a></li>
+          <li><a href="assessment.html">Scorecard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="podcast.html">Podcast</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">Book Your AI Audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-gold-line" aria-hidden="true"></div>
+      <p class="footer-copy">© 2026 1760 Strategic AI. All rights reserved.</p>
+      <p class="footer-copy">Privacy · Terms</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script>
+  (function () {
+    // Blog filter
+    var pills = document.querySelectorAll('.filter-pill');
+    var featured = document.querySelector('.blog-featured');
+    var cards = document.querySelectorAll('.blog-card');
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        var filter = this.dataset.filter;
+        pills.forEach(function (p) { p.classList.remove('active'); });
+        this.classList.add('active');
+        if (featured) {
+          featured.style.display = (filter === 'all' || featured.dataset.category === filter) ? '' : 'none';
+        }
+        cards.forEach(function (card) {
+          card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+        });
+      });
+    });
+    // Force reveals visible (fallback for local file:// preview)
+    setTimeout(function () {
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        el.classList.add('in');
+      });
+    }, 80);
+  }());
+</script>
+</body>
+</html>
