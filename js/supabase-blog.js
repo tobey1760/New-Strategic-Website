@@ -62,7 +62,7 @@
   // even when they sit in the same blank-line-delimited block.
   function parseBody(text) {
     var lines = String(text || '').replace(/\r\n/g, '\n').split('\n');
-    var out = [], para = [], list = [], quote = [];
+    var out = [], para = [], list = [], olist = [], quote = [];
 
     function flushPara() {
       if (para.length) { out.push('<p>' + fmt(para.join(' ')) + '</p>'); para = []; }
@@ -73,10 +73,16 @@
         list = [];
       }
     }
+    function flushOlist() {
+      if (olist.length) {
+        out.push('<ol>' + olist.map(function (li) { return '<li>' + fmt(li) + '</li>'; }).join('') + '</ol>');
+        olist = [];
+      }
+    }
     function flushQuote() {
       if (quote.length) { out.push('<blockquote><p>' + fmt(quote.join(' ')) + '</p></blockquote>'); quote = []; }
     }
-    function flushAll() { flushPara(); flushList(); flushQuote(); }
+    function flushAll() { flushPara(); flushList(); flushOlist(); flushQuote(); }
 
     for (var i = 0; i < lines.length; i++) {
       var line = lines[i].trim();
@@ -87,13 +93,16 @@
       if (/^#\s+/.test(line)) {                                  // # -> H2
         flushAll(); out.push('<h2>' + fmt(line.replace(/^#\s+/, '')) + '</h2>'); continue;
       }
+      if (/^\d+\.\s+/.test(line)) {                              // "1." -> ordered list
+        flushPara(); flushList(); flushQuote(); olist.push(line.replace(/^\d+\.\s+/, '')); continue;
+      }
       if (/^[-*]\s+/.test(line)) {                               // - or * -> bullet
-        flushPara(); flushQuote(); list.push(line.replace(/^[-*]\s+/, '')); continue;
+        flushPara(); flushOlist(); flushQuote(); list.push(line.replace(/^[-*]\s+/, '')); continue;
       }
       if (/^>\s?/.test(line)) {                                  // > -> quote
-        flushPara(); flushList(); quote.push(line.replace(/^>\s?/, '')); continue;
+        flushPara(); flushList(); flushOlist(); quote.push(line.replace(/^>\s?/, '')); continue;
       }
-      flushList(); flushQuote(); para.push(line);                // plain paragraph text
+      flushList(); flushOlist(); flushQuote(); para.push(line);  // plain paragraph text
     }
     flushAll();
     return out.join('\n');
@@ -107,6 +116,7 @@
         return l.trim()
           .replace(/^#{1,6}\s+/, '')   // headings
           .replace(/^[-*]\s+/, '')      // bullets
+          .replace(/^\d+\.\s+/, '')     // numbered list
           .replace(/^>\s?/, '')         // quotes
           .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links -> text
           .replace(/\*\*([^*]+?)\*\*/g, '$1')      // bold markers
