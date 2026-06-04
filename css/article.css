@@ -130,6 +130,17 @@
 }
 .article-toc li.toc-h3 a { padding-left: 28px; font-size: 0.85rem; }
 
+/* ---- Numbered (ordered) lists -------------------------------- */
+.article-body ol { margin: 0 0 24px; padding-left: 26px; }
+.article-body ol li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-mid);
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+.article-body ol li::marker { color: var(--gold); font-weight: 700; }
+
 /* ---- Sub-headings (## -> h3) --------------------------------- */
 .article-body h3 {
   font-family: 'Cabinet Grotesk', system-ui, -apple-system, sans-serif;
