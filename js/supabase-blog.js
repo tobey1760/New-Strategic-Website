@@ -44,45 +44,58 @@
   var LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+|\/[^\s)]+|[\w.\-]+\.html(?:#[^\s)]*)?)\)/g;
 
   // Apply inline formatting to an ALREADY html-escaped string.
+  //   **bold** -> <strong>,  [text](url) -> <a>
   function inlineFormat(escaped) {
-    return escaped.replace(LINK_RE, function (_, text, url) {
-      var external = /^https?:\/\//i.test(url);
-      var attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
-      return '<a href="' + url + '"' + attrs + '>' + text + '</a>';
-    });
+    return escaped
+      .replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>')
+      .replace(LINK_RE, function (_, text, url) {
+        var external = /^https?:\/\//i.test(url);
+        var attrs = external ? ' target="_blank" rel="noopener noreferrer"' : '';
+        return '<a href="' + url + '"' + attrs + '>' + text + '</a>';
+      });
   }
 
   function fmt(raw) { return inlineFormat(escapeHtml(raw)); }
 
+  // Line-by-line parser (robust to standard markdown): a heading and its
+  // following paragraph, or an intro line followed by bullets, are handled
+  // even when they sit in the same blank-line-delimited block.
   function parseBody(text) {
-    var blocks = String(text || '').trim().split(/\n\s*\n+/)
-      .map(function (b) { return b.trim(); })
-      .filter(Boolean);
-    var out = [];
-    for (var i = 0; i < blocks.length; i++) {
-      var lines = blocks[i].split('\n')
-        .map(function (l) { return l.trim(); })
-        .filter(Boolean);
-      if (!lines.length) continue;
+    var lines = String(text || '').replace(/\r\n/g, '\n').split('\n');
+    var out = [], para = [], list = [], quote = [];
 
-      var allBullets = lines.every(function (l) { return /^[-*]\s+/.test(l); });
-      var allQuote = lines.every(function (l) { return /^>\s?/.test(l); });
-
-      if (allBullets) {
-        out.push('<ul>' + lines.map(function (l) {
-          return '<li>' + fmt(l.replace(/^[-*]\s+/, '')) + '</li>';
-        }).join('') + '</ul>');
-      } else if (allQuote) {
-        var quote = lines.map(function (l) { return l.replace(/^>\s?/, ''); }).join(' ');
-        out.push('<blockquote><p>' + fmt(quote) + '</p></blockquote>');
-      } else if (lines.length === 1 && /^##\s+/.test(lines[0])) {
-        out.push('<h3>' + fmt(lines[0].replace(/^##\s+/, '')) + '</h3>');
-      } else if (lines.length === 1 && /^#\s+/.test(lines[0])) {
-        out.push('<h2>' + fmt(lines[0].replace(/^#\s+/, '')) + '</h2>');
-      } else {
-        out.push('<p>' + fmt(lines.join(' ')) + '</p>');
+    function flushPara() {
+      if (para.length) { out.push('<p>' + fmt(para.join(' ')) + '</p>'); para = []; }
+    }
+    function flushList() {
+      if (list.length) {
+        out.push('<ul>' + list.map(function (li) { return '<li>' + fmt(li) + '</li>'; }).join('') + '</ul>');
+        list = [];
       }
     }
+    function flushQuote() {
+      if (quote.length) { out.push('<blockquote><p>' + fmt(quote.join(' ')) + '</p></blockquote>'); quote = []; }
+    }
+    function flushAll() { flushPara(); flushList(); flushQuote(); }
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].trim();
+      if (!line) { flushAll(); continue; }                       // blank line -> break
+      if (/^#{2,}\s+/.test(line)) {                              // ## (or more) -> H3
+        flushAll(); out.push('<h3>' + fmt(line.replace(/^#{2,}\s+/, '')) + '</h3>'); continue;
+      }
+      if (/^#\s+/.test(line)) {                                  // # -> H2
+        flushAll(); out.push('<h2>' + fmt(line.replace(/^#\s+/, '')) + '</h2>'); continue;
+      }
+      if (/^[-*]\s+/.test(line)) {                               // - or * -> bullet
+        flushPara(); flushQuote(); list.push(line.replace(/^[-*]\s+/, '')); continue;
+      }
+      if (/^>\s?/.test(line)) {                                  // > -> quote
+        flushPara(); flushList(); quote.push(line.replace(/^>\s?/, '')); continue;
+      }
+      flushList(); flushQuote(); para.push(line);                // plain paragraph text
+    }
+    flushAll();
     return out.join('\n');
   }
 
@@ -92,10 +105,12 @@
       .split('\n')
       .map(function (l) {
         return l.trim()
-          .replace(/^#{1,2}\s+/, '')   // headings
+          .replace(/^#{1,6}\s+/, '')   // headings
           .replace(/^[-*]\s+/, '')      // bullets
           .replace(/^>\s?/, '')         // quotes
-          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'); // links -> text
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links -> text
+          .replace(/\*\*([^*]+?)\*\*/g, '$1')      // bold markers
+          .replace(/[*_]{1,2}/g, '');              // stray emphasis marks
       })
       .join(' ')
       .replace(/\s+/g, ' ')
