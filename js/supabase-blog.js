@@ -156,9 +156,30 @@
     return month + ' ' + day + ', ' + m[1];
   }
 
-  // Best available date for a live post.
+  // Best available date for a live post. Guards against a typo'd
+  // posted_on that's implausibly earlier than created_at (e.g. a "2001"
+  // year): in that case fall back to created_at so the shown date is sane.
   function postDateValue(row) {
-    return row.posted_on || row.scheduled_for || row.created_at || null;
+    var posted = row.posted_on, created = row.created_at;
+    if (posted && created) {
+      return String(posted).slice(0, 10) >= String(created).slice(0, 10) ? posted : created;
+    }
+    return posted || row.scheduled_for || created || null;
+  }
+
+  // Sort newest-posted first. Primary = the posted date (posted_on, with
+  // the bad-date guard above); tiebreak = when it actually went live
+  // (status_changed_at), so two posts published the same day order by the
+  // most recently posted.
+  function sortByPosted(rows) {
+    return rows.slice().sort(function (a, b) {
+      var da = String(postDateValue(a) || '').slice(0, 10);
+      var db = String(postDateValue(b) || '').slice(0, 10);
+      if (da !== db) return da < db ? 1 : -1;
+      var ca = a.status_changed_at || a.created_at || '';
+      var cb = b.status_changed_at || b.created_at || '';
+      return ca < cb ? 1 : (ca > cb ? -1 : 0);
+    });
   }
 
   // Statuses considered publicly "live". Keep in sync with the RLS
@@ -169,7 +190,7 @@
   // optional extras; if either has not been applied to this project yet,
   // queries fall back to the base column set so nothing breaks
   // (see runWithFallback below).
-  var BASE_COLS = 'id,title,body,status,posted_on,scheduled_for,created_at';
+  var BASE_COLS = 'id,title,body,status,posted_on,scheduled_for,created_at,status_changed_at';
   // Column tiers tried in order — each drops the newest optional column.
   // Lets the site keep working even if a migration (tags, etc.) hasn't
   // been applied to this project yet.
@@ -208,11 +229,10 @@
       var q = c.from(cfg.table || 'blogs')
         .select(cols)
         .in('status', LIVE_STATUSES)
-        .order('posted_on', { ascending: false, nullsFirst: false })
-        .order('created_at', { ascending: false });
+        .order('status_changed_at', { ascending: false });
       if (limit) q = q.limit(limit);
       return q;
-    }).then(function (data) { return data || []; });
+    }).then(function (data) { return sortByPosted(data || []); });
   }
 
   // ---- Fetch a single live post by id --------------------------------
