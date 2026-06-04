@@ -1,0 +1,11 @@
+# Video files
+*.mp4
+*.mov
+*.avi
+
+# Claude Code
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

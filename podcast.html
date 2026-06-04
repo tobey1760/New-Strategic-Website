@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conversations with founders who built real operational infrastructure. Hosted by Harry Thornberry." />
+  <meta property="og:title" content="Conversations with founders who built real infrastructure." />
+  <meta property="og:description" content="Conversations with founders who built real operational infrastructure. Hosted by Harry Thornberry." />
+  <meta property="og:type" content="website" />
+  <title>The 1760 Sessions | Podcast for Founders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="logo%201760.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+    <div class="logo-emblem" aria-hidden="true"></div>
+    <div class="logo-text">
+      1760 Strategic AI
+      <span>Systems Design &amp; Consulting</span>
+    </div>
+  </a>
+  <div class="nav-links" role="menubar">
+    <a href="how-we-work.html" role="menuitem">Our Approach</a>
+    <div class="nav-drop" role="none">
+      <button class="nav-drop-trigger" aria-expanded="false" aria-haspopup="true">The 1760 System</button>
+      <div class="nav-drop-menu" role="menu">
+        <a href="the-1760-system.html" role="menuitem" class="drop-overview">The 1760 System — Overview</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="revenue-engine.html" role="menuitem">Revenue Engine</a>
+        <a href="operations-command-center.html" role="menuitem">Operations Command Center</a>
+        <a href="founder-intelligence.html" role="menuitem">Founder Intelligence System</a>
+        <a href="authority-engine.html" role="menuitem">Authority Engine</a>
+        <div class="drop-divider" aria-hidden="true"></div>
+        <a href="health-services.html" role="menuitem">Health Services</a>
+        <a href="ai-engineering.html" role="menuitem">AI Engineering</a>
+      </div>
+    </div>
+    <a href="case-studies.html" role="menuitem">Case Studies</a>
+    <a href="about.html" role="menuitem">About</a>
+    <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill" role="menuitem">Book Your AI Audit</a>
+  </div>
+
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+  <a href="how-we-work.html">Our Approach</a>
+  <div class="nav-drawer-group">
+    <div class="nav-drawer-label">The 1760 System</div>
+    <a href="the-1760-system.html">Overview</a>
+    <a href="revenue-engine.html">Revenue Engine</a>
+    <a href="operations-command-center.html">Operations Command Center</a>
+    <a href="founder-intelligence.html">Founder Intelligence System</a>
+    <a href="authority-engine.html">Authority Engine</a>
+    <a href="health-services.html">Health Services</a>
+    <a href="ai-engineering.html">AI Engineering</a>
+  </div>
+  <a href="case-studies.html">Case Studies</a>
+  <a href="about.html">About</a>
+  <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="nav-cta-pill">Book Your AI Audit</a>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-bg">
+    <video class="page-hero-video" autoplay muted playsinline loop>
+      <source data-src="brain.mp4" type="video/mp4">
+    </video>
+    <div class="page-hero-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="section-kicker" style="color:var(--gold);"><span class="kicker-ornament" aria-hidden="true"></span>The 1760 Sessions</div>
+      <h1 class="page-hero-headline">Conversations with founders<br />who built<br /><em>real infrastructure.</em></h1>
+      <p class="page-hero-sub">Each episode: one founder, one operational challenge, the systems that solved it.</p>
+      <div class="hero-cta-group" style="margin-top:32px;">
+        <a href="https://www.youtube.com/@The1760Sessions" target="_blank" rel="noopener noreferrer" class="btn-gold">
+          Listen Now
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@The1760Sessions?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn-outline-forest">Subscribe</a>
+      </div></div>
+  </div>
+</section>
+
+<div class="insight-band">
+  <blockquote>"The conversations we have with founders never start with 'I need AI.' They start with 'I cannot keep doing this.' That is what The 1760 Sessions is about."</blockquote>
+  <cite>Harry Thornberry, Co-Founder &amp; Host</cite>
+</div>
+
+<!-- ══════════════════ SHOW DESCRIPTION ══════════════════ -->
+<section class="inner-section">
+  <div class="container">
+
+    <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>The Show</div>
+    <h2 class="section-heading reveal">For operators who build.<br /><em>Not just think.</em></h2>
+    <p class="section-body reveal reveal-d1">The 1760 Sessions features founders and operators building real systems: revenue infrastructure, operations backbones, founder intelligence, authority engines. You will hear about the leverage points, the obstacles, and the moments when it got real. New episodes every week.</p>
+
+  </div>
+</section>
+
+<!-- ══════════════════ EPISODE GRID ══════════════════ -->
+<section class="inner-section inner-section-alt" id="episodes">
+  <div class="container">
+
+    <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>Episodes</div>
+    <h2 class="section-heading reveal">All episodes.</h2>
+
+    <article class="ep-hero" data-cat="revenue">
+      <div class="ep-hero-media">
+        <button class="ep-hero-play" type="button" aria-label="Play EP 45 — Tom Scarda" data-video="Sbc0Uo_ZWLg" data-cat="revenue">
+          <img src="https://img.youtube.com/vi/Sbc0Uo_ZWLg/maxresdefault.jpg" alt="" loading="eager" />
+          <span class="ep-hero-play-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M7 4.5L17 11L7 17.5V4.5Z" fill="currentColor"/></svg>
+          </span>
+        </button>
+      </div>
+      <div class="ep-hero-meta">
+        <div class="ep-hero-num">EP 45 · Latest Episode</div>
+        <h3 class="ep-hero-guest">Tom Scarda</h3>
+        <p class="ep-hero-company">The Franchise Academy</p>
+        <p class="ep-hero-topic">Franchise consulting &amp; scaling to 134 locations.</p>
+        <span class="ep-hero-cat">Revenue</span>
+      </div>
+    </article>
+
+    <ol class="ep-list" role="list">
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="IceKEHceuFY" data-cat="operations">
+          <span class="ep-num">EP 44</span>
+          <span class="ep-who"><span class="ep-guest">Keith Larson</span><span class="ep-company">Zen Massage</span></span>
+          <span class="ep-topic">Reforming franchise operations without contracts</span>
+          <span class="ep-cat">Operations</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="dID2JX2retk" data-cat="intelligence">
+          <span class="ep-num">EP 43</span>
+          <span class="ep-who"><span class="ep-guest">Jim Bishop</span><span class="ep-company">Conjunction Leadership</span></span>
+          <span class="ep-topic">From success to significance in executive coaching</span>
+          <span class="ep-cat">Intelligence</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="CvZ-EV6fN5o" data-cat="operations">
+          <span class="ep-num">EP 42</span>
+          <span class="ep-who"><span class="ep-guest">Jennifer Massey</span><span class="ep-company">Integra HR</span></span>
+          <span class="ep-topic">HR systems, team dynamics &amp; AI in HR</span>
+          <span class="ep-cat">Operations</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="X3vPGSRhGFg" data-cat="intelligence">
+          <span class="ep-num">EP 41</span>
+          <span class="ep-who"><span class="ep-guest">Penny Pearl</span><span class="ep-company">2Actify</span></span>
+          <span class="ep-topic">Strategic career coaching for tech executives</span>
+          <span class="ep-cat">Intelligence</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="OHhEH91snc4" data-cat="intelligence">
+          <span class="ep-num">EP 40</span>
+          <span class="ep-who"><span class="ep-guest">Kate Cockrill &amp; Corinne Ferris</span><span class="ep-company">SkillCharter</span></span>
+          <span class="ep-topic">Leadership development &amp; team coaching</span>
+          <span class="ep-cat">Intelligence</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="6e1a6P3dOyg" data-cat="intelligence">
+          <span class="ep-num">EP 39</span>
+          <span class="ep-who"><span class="ep-guest">Matt Williams</span><span class="ep-company">Epiphany Professional Development</span></span>
+          <span class="ep-topic">Executive coaching with ACT framework &amp; AI</span>
+          <span class="ep-cat">Intelligence</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="m9oR5Wc-0sM" data-cat="operations">
+          <span class="ep-num">EP 38</span>
+          <span class="ep-who"><span class="ep-guest">Brian Wygle</span><span class="ep-company">Helpformycompany.com</span></span>
+          <span class="ep-topic">Corporate restructuring &amp; interim leadership</span>
+          <span class="ep-cat">Operations</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="prxm6Kx3Rcg" data-cat="intelligence">
+          <span class="ep-num">EP 37</span>
+          <span class="ep-who"><span class="ep-guest">Nate Vander Stelt</span><span class="ep-company">The Kairos Collaborative</span></span>
+          <span class="ep-topic">Leadership through reflection &amp; purpose</span>
+          <span class="ep-cat">Intelligence</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="KOLYVlBWZ38" data-cat="authority">
+          <span class="ep-num">EP 36</span>
+          <span class="ep-who"><span class="ep-guest">Tatyana &amp; Natalia</span><span class="ep-company">DEXIT</span></span>
+          <span class="ep-topic">Digital estate planning &amp; legacy management</span>
+          <span class="ep-cat">Authority</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="cAS4WFISIkM" data-cat="authority">
+          <span class="ep-num">EP 35</span>
+          <span class="ep-who"><span class="ep-guest">Renee Balcom</span><span class="ep-company">Scroll.care</span></span>
+          <span class="ep-topic">Healthcare advocacy powered by AI</span>
+          <span class="ep-cat">Authority</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="zY7AMYbyfM4" data-cat="intelligence">
+          <span class="ep-num">EP 34</span>
+          <span class="ep-who"><span class="ep-guest">Holly Lasky</span></span>
+          <span class="ep-topic">Hypnotherapy &amp; life coaching modalities</span>
+          <span class="ep-cat">Intelligence</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="WwymFh0gCJk" data-cat="authority">
+          <span class="ep-num">EP 34</span>
+          <span class="ep-who"><span class="ep-guest">Jon Washington</span><span class="ep-company">The Innovation Garage</span></span>
+          <span class="ep-topic">Human-centered AI &amp; leadership training</span>
+          <span class="ep-cat">Authority</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="hLF8xcC1feU" data-cat="authority">
+          <span class="ep-num">EP 33</span>
+          <span class="ep-who"><span class="ep-guest">Candyce Edelen</span></span>
+          <span class="ep-topic">LinkedIn sales strategy &amp; personalized outreach</span>
+          <span class="ep-cat">Authority</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+      <li class="ep-item">
+        <button class="ep-row" type="button" aria-expanded="false" data-video="sAS9hMn0tVI" data-cat="intelligence">
+          <span class="ep-num">EP 32</span>
+          <span class="ep-who"><span class="ep-guest">Eric Bosnyak</span></span>
+          <span class="ep-topic">Corporate coaching &amp; intentional career redesign</span>
+          <span class="ep-cat">Intelligence</span>
+        </button>
+        <div class="ep-player" hidden aria-hidden="true"></div>
+      </li>
+    </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SUBSCRIBE ══════════════════ -->
+<section class="inner-section" id="subscribe">
+  <div class="container">
+
+    <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>Subscribe</div>
+    <h2 class="section-heading reveal">Listen anywhere.</h2>
+
+    <div class="subscribe-strip reveal reveal-d1">
+      <span class="subscribe-label">Available on:</span>
+      <a href="https://www.youtube.com/@The1760Sessions" target="_blank" rel="noopener noreferrer" class="subscribe-btn">YouTube</a>
+    </div>
+
+    <div style="margin-top:48px;max-width:520px;" class="reveal reveal-d2">
+      <p style="font-family:'Cabinet Grotesk',system-ui,-apple-system,sans-serif;font-size:1.1rem;font-weight:700;color:var(--forest);margin-bottom:12px;">Get show notes in your inbox.</p>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:24px;">Key insights from every episode, delivered the day it drops.</p>
+      <div class="newsletter-input-wrap">
+        <input type="email" class="newsletter-input" placeholder="your@email.com" aria-label="Email" />
+        <button class="newsletter-btn">Subscribe</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ BE A GUEST ══════════════════ -->
+<section class="inner-section inner-section-alt">
+  <div class="container">
+
+    <div class="section-kicker reveal"><span class="kicker-ornament" aria-hidden="true"></span>Be a Guest</div>
+    <h2 class="section-heading reveal">We feature founders<br />who built through it.</h2>
+    <p class="section-body reveal reveal-d1">We feature founders who have lived the constraint and built through it. Not consultants talking about building. Founders who did the building.</p>
+
+    <div class="reveal reveal-d2" style="margin-top:32px;">
+      <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="btn-gold">
+        Apply to Be a Guest
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p style="font-size:0.78rem;color:var(--text-muted);margin-top:14px;">15-minute screening call. Founders only.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ CTA ══════════════════ -->
+<section class="cta-section">
+  <div class="cta-dotted-surface" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-inner cta-centered">
+      <div class="cta-deco-rings" aria-hidden="true">
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+        <div class="cta-ring"></div>
+      </div>
+      <p class="cta-kicker">— 30 Minutes. No Pitch.</p>
+      <h2 class="cta-heading">Start with the audit.</h2>
+      <p class="cta-sub">30 minutes. No pitch.</p>
+      <div class="cta-btn-group" style="justify-content:center;">
+        <a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer" class="btn-gold">
+          Book Your AI Audit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" aria-label="1760 Strategic AI — home">
+          <div class="logo-emblem" aria-hidden="true"></div>
+          <div class="logo-text">
+            1760 Strategic AI
+            <span>Systems Design &amp; Consulting</span>
+          </div>
+        </a>
+        <p class="footer-desc">Operational infrastructure for health tech and service founders. Strategy, AI, and execution under one roof.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="health-services.html">Health Services</a></li>
+          <li><a href="ai-engineering.html">AI Engineering</a></li>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">AI Audit</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Systems</h4>
+        <ul>
+          <li><a href="the-1760-system.html">The 1760 System</a></li>
+          <li><a href="revenue-engine.html">Revenue Engine</a></li>
+          <li><a href="authority-engine.html">Authority Engine</a></li>
+          <li><a href="operations-command-center.html">Operations Command Center</a></li>
+          <li><a href="founder-intelligence.html">Founder Intelligence System</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="how-we-work.html">How We Work</a></li>
+          <li><a href="assessment.html">Scorecard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="podcast.html">Podcast</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="https://calendly.com/harry-1760ventures/ai-audit-1760-strategic-ai" target="_blank" rel="noopener noreferrer">Book Your AI Audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-gold-line" aria-hidden="true"></div>
+      <p class="footer-copy">© 2026 1760 Strategic AI. All rights reserved.</p>
+      <p class="footer-copy">Privacy · Terms</p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+/* ══════════════════════════════════════════════════════════════
+   article.css — richer editorial layout for blog article pages.
+   Layered on top of styles.css. Used by post.html (dynamic Supabase
+   posts) and blog-post.html (static). Adds:
+     · breadcrumb
+     · cover-image banner overlapping the hero
+     · two-column layout with a sticky table of contents
+     · social share buttons (horizontal in hero, vertical in sidebar)
+     · pull-quote / callout styling
+   ══════════════════════════════════════════════════════════════ */
+
+/* ---- Breadcrumb (in hero) ------------------------------------- */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  color: rgba(255, 255, 255, 0.55);
+}
+.breadcrumb a { color: rgba(255, 255, 255, 0.78); text-decoration: none; transition: color .2s; }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb .sep { color: rgba(255, 255, 255, 0.32); }
+.breadcrumb .current { color: var(--gold); }
+
+/* ---- Share buttons ------------------------------------------- */
+.share-row { display: flex; align-items: center; gap: 10px; margin-top: 26px; }
+.share-row .share-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5); margin-right: 2px;
+}
+.share-btn {
+  width: 38px; height: 38px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer; transition: all .2s ease; padding: 0;
+}
+.share-btn:hover { background: var(--gold); border-color: var(--gold); color: #1a1305; transform: translateY(-2px); }
+.share-btn svg { width: 16px; height: 16px; }
+.share-btn.copied { background: var(--gold); border-color: var(--gold); color: #1a1305; }
+
+/* Vertical share rail inside the sticky sidebar (dark-on-light) */
+.toc-share { margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(0,0,0,0.08); }
+.toc-share .share-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mid); margin-bottom: 12px;
+}
+.toc-share .share-row { margin-top: 0; gap: 8px; }
+.toc-share .share-btn {
+  border-color: rgba(0,0,0,0.12); background: rgba(0,0,0,0.02); color: var(--forest); width: 36px; height: 36px;
+}
+.toc-share .share-btn:hover { background: var(--gold); border-color: var(--gold); color: #1a1305; }
+
+/* ---- Cover banner -------------------------------------------- */
+.article-cover {
+  max-width: 1000px;
+  margin: -90px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px -30px rgba(0,0,0,0.55);
+  position: relative;
+  z-index: 3;
+}
+.article-cover-img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---- Two-column shell: sticky TOC + content ------------------ */
+.article-shell {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 720px);
+  gap: 56px;
+  justify-content: center;
+  align-items: start;
+  padding: 56px 24px 40px;
+}
+.article-shell.no-toc { grid-template-columns: minmax(0, 760px); }
+
+/* In the new shell the article column should fill its grid cell,
+   overriding the standalone centering from styles.css. */
+.article-shell .article-wrap {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Table of contents --------------------------------------- */
+.article-toc {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+  font-size: 0.9rem;
+}
+.article-toc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--text-mid);
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.article-toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.article-toc li a {
+  display: block;
+  padding: 7px 0 7px 14px;
+  border-left: 2px solid rgba(0,0,0,0.08);
+  color: var(--text-mid);
+  text-decoration: none;
+  line-height: 1.4;
+  transition: color .2s, border-color .2s;
+}
+.article-toc li a:hover { color: var(--forest); }
+.article-toc li a.active {
+  color: var(--forest);
+  font-weight: 600;
+  border-left-color: var(--gold);
+}
+.article-toc li.toc-h3 a { padding-left: 28px; font-size: 0.85rem; }
+
+/* ---- Sub-headings (## -> h3) --------------------------------- */
+.article-body h3 {
+  font-family: 'Cabinet Grotesk', system-ui, -apple-system, sans-serif;
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  font-weight: 700;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin: 36px 0 14px;
+}
+
+/* ---- Inline links in body ------------------------------------ */
+.article-body a {
+  color: #1f7a6d;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(31,122,109,0.35);
+  transition: color .2s, border-color .2s;
+}
+.article-body a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ---- Tag chips on blog cards --------------------------------- */
+.blog-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; }
+.blog-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  color: var(--text-mid);
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+
+/* ---- Hero tag pills (multi-value tags) ----------------------- */
+.post-hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.post-hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.82);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+  padding: 5px 12px;
+  transition: all .2s;
+}
+.post-hero-tag:hover { background: rgba(219,192,120,0.18); border-color: var(--gold); color: #fff; }
+
+/* ---- Pull-quote / callout (works for builder + static) -------- */
+.article-body blockquote {
+  margin: 40px 0;
+  padding: 8px 0 8px 28px;
+  border-left: 3px solid var(--gold);
+  font-family: 'Cabinet Grotesk', system-ui, sans-serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--forest);
+}
+.article-body blockquote p { font-size: inherit; color: inherit; line-height: inherit; margin: 0; }
+.article-body .pull-quote {
+  margin: 44px 0;
+  padding: 32px 36px;
+  background: rgba(219,192,120,0.06);
+  border: 1px solid rgba(219,192,120,0.22);
+  border-radius: 14px;
+  font-family: 'Cabinet Grotesk', system-ui, sans-serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--forest);
+  text-align: center;
+}
+
+/* ---- Inline share at end of article -------------------------- */
+.article-share-end {
+  display: flex; align-items: center; gap: 12px;
+  margin: 48px 0 8px; padding-top: 28px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.article-share-end .share-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mid);
+}
+.article-share-end .share-btn {
+  border-color: rgba(0,0,0,0.12); background: rgba(0,0,0,0.02); color: var(--forest);
+}
+.article-share-end .share-btn:hover { background: var(--gold); border-color: var(--gold); color: #1a1305; }
+
+/* ---- Mobile -------------------------------------------------- */
+@media (max-width: 900px) {
+  .article-cover { margin-top: -56px; border-radius: 14px; }
+  .article-cover-img { aspect-ratio: 16 / 9; }
+  .article-shell {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 32px 20px 24px;
+  }
+  /* Collapsible "In this article" on mobile */
+  .article-toc {
+    position: static;
+    margin-bottom: 32px;
+    padding: 18px 20px;
+    background: rgba(0,0,0,0.025);
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 12px;
+  }
+  .article-toc .toc-share { display: none; }
+}
