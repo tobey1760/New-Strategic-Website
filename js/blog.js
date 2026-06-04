@@ -105,21 +105,14 @@
     SB.fetchLivePosts(50).then(function (rows) {
       if (!rows || !rows.length) return;
 
-      // A Supabase post flagged is_featured replaces the static featured
-      // block. rows are newest-first, so the first flagged one wins.
-      var featuredRow = null;
-      for (var i = 0; i < rows.length; i++) {
-        if (SB.isFeatured(rows[i])) { featuredRow = rows[i]; break; }
-      }
+      // Newest post is always featured (rows are ordered newest-first).
+      var featuredRow = rows[0];
 
-      var gridRows = rows;
-      if (featuredRow) {
-        var staticFeatured = document.querySelector('.blog-featured');
-        if (staticFeatured) {
-          staticFeatured.outerHTML = featuredHtml(featuredRow);
-        }
-        gridRows = rows.filter(function (r) { return r.id !== featuredRow.id; });
+      var staticFeatured = document.querySelector('.blog-featured');
+      if (staticFeatured) {
+        staticFeatured.outerHTML = featuredHtml(featuredRow);
       }
+      var gridRows = rows.slice(1);
 
       if (gridRows.length) {
         // Prepend so newest Supabase posts sit above the static articles.
