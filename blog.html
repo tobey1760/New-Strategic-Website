@@ -13,6 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="logo%201760.png" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/article.css" />
 </head>
 <body>
 <div class="cursor" id="cursor" aria-hidden="true"></div>
@@ -357,22 +358,27 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-blog.js"></script>
+<script src="js/blog.js"></script>
 <script src="js/main.js" defer></script>
 <script>
   (function () {
-    // Blog filter
+    // Blog filter — re-query cards on each click so Supabase posts
+    // injected after load are included.
     var pills = document.querySelectorAll('.filter-pill');
-    var featured = document.querySelector('.blog-featured');
-    var cards = document.querySelectorAll('.blog-card');
     pills.forEach(function (pill) {
       pill.addEventListener('click', function () {
         var filter = this.dataset.filter;
         pills.forEach(function (p) { p.classList.remove('active'); });
         this.classList.add('active');
+        // Re-query each click — js/blog.js may replace the featured block.
+        var featured = document.querySelector('.blog-featured');
         if (featured) {
           featured.style.display = (filter === 'all' || featured.dataset.category === filter) ? '' : 'none';
         }
-        cards.forEach(function (card) {
+        document.querySelectorAll('.blog-card').forEach(function (card) {
           card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
         });
       });
